@@ -1,0 +1,179 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>İstanbul Düellosu: AI Derbi Filmi Nasıl Yapıldı? · Yapay BurLab</title><meta name="description" content="Not: Karakterler özgün tasarlanmalıdır; gerçek kişilerin yüzü ya da sesi kullanılmamalıdır.">
+<meta property="og:title" content="İstanbul Düellosu: AI Derbi Filmi Nasıl Yapıldı?"><meta property="og:description" content="Not: Karakterler özgün tasarlanmalıdır; gerçek kişilerin yüzü ya da sesi kullanılmamalıdır."><meta property="og:image" content="../logo.png">
+<link rel="icon" href="../logo.png"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@800&family=JetBrains+Mono&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<style>:root{--bg:#070B14;--kart:#0D1424;--cizgi:#1E2A44;--yazi:#E8EEF8;--soluk:#8A97B0;--p:#22E6FF;--s:#A95BFF;--w:#FFD23F;--ok:#2EE59D}
+*{box-sizing:border-box}html{background:var(--bg)}body{margin:0;background:var(--bg) radial-gradient(80% 900px at 50% 0,#12224a 0,var(--bg) 70%) no-repeat;min-height:100vh;color:var(--yazi);font:17px/1.65 Montserrat,system-ui,sans-serif}
+.kap{max-width:760px;margin:0 auto;padding:28px 16px 60px}header{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+header img{width:48px;height:48px}header b{font-family:'Exo 2',sans-serif;font-size:22px}header span{color:var(--soluk);font:14px 'JetBrains Mono',monospace}
+h1{font-family:'Exo 2',sans-serif;font-weight:800;font-size:clamp(28px,6vw,40px);line-height:1.15;margin:.2em 0 .5em}
+h2{font-family:'Exo 2',sans-serif;color:var(--p);margin-top:1.8em}h3{margin-top:1.6em}
+.rozet{display:inline-block;padding:4px 12px;border:1.5px solid var(--p);border-radius:20px;font:13px 'JetBrains Mono',monospace;color:var(--p);letter-spacing:2px}
+.kod{position:relative;background:#04080F;border:1px solid var(--cizgi);border-radius:12px;margin:14px 0}
+.kod pre{margin:0;padding:44px 16px 16px;overflow-x:auto;font:14px/1.5 'JetBrains Mono',monospace}.kod button{position:absolute;top:8px;right:8px;background:var(--p);color:#04121A;border:0;border-radius:8px;padding:5px 12px;font-weight:700;cursor:pointer}
+code{font-family:'JetBrains Mono',monospace;background:#101a2e;padding:1px 6px;border-radius:6px;font-size:.9em}.kod code{background:none;padding:0}
+.ipucu{border-left:3px solid var(--w);background:rgba(255,210,63,.07);padding:10px 14px;border-radius:0 10px 10px 0;margin:12px 0}
+a{color:var(--p)}.liste a.kart{display:block;text-decoration:none;color:var(--yazi);background:var(--kart);border:1px solid var(--cizgi);border-radius:16px;padding:18px;margin:12px 0}
+.liste a.kart:hover{border-color:var(--p)}.liste small{color:var(--soluk)}footer{margin-top:50px;padding-top:20px;border-top:1px solid var(--cizgi);color:var(--soluk);font-size:14px}
+figure{margin:18px 0}figure img{display:block;max-width:100%;max-height:85vh;width:auto;height:auto;margin:0 auto;border-radius:12px;border:1px solid var(--cizgi)}figcaption{color:var(--soluk);font-size:14px;margin-top:6px}
+.ara{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--cizgi);background:var(--kart);color:var(--yazi);font-size:16px}</style></head><body><div class="kap">
+<header><a href="../"><img src="../logo.png" alt="Yapay BurLab"></a><div><b>Yapay BurLab</b><br><span>@yapayburlab · Rehber merkezi</span></div></header>
+<span class="rozet">YORUM KELİMESİ: REHBER</span><h1>İstanbul Düellosu: AI Derbi Filmi Nasıl Yapıldı?</h1><div class="ipucu">Bu rehberde 60 saniyelik, konuşmalı ve iki parçalı bir AI futbol filminin bütün tarifi var. Tarif <strong>özgün karakterlerle</strong> çalışır: oyuncu kartlarını kendin tasarlarsın. Böylece kaldırılma riski olmaz, istediğin kadar bölüm üretebilirsin.</div>
+<div class="ipucu"><strong>Not:</strong> Karakterler özgün tasarlanmalıdır; gerçek kişilerin yüzü ya da sesi kullanılmamalıdır.</div>
+<figure><img src="img/01_aslan_pence.jpg" alt="Aslan koruyucunun pençesi ıslak çime basıyor, yelesinden korlar düşüyor (filmin ilk saniyesi)" loading="lazy"><figcaption>Aslan koruyucunun pençesi ıslak çime basıyor, yelesinden korlar düşüyor (filmin ilk saniyesi)</figcaption></figure>
+<h2>0. Araçlar ve maliyet</h2>
+<ul>
+<li><strong>OpenArt · Seedance 2.5</strong> (video, sesli). Ayar: 9:16, 30 sn, Ses: Açık.</li>
+<li><strong>OpenArt · GPT Image 2.5</strong> (karakter kartları).</li>
+<li><strong>Maliyet (ekrandan):</strong> 480p / 30 sn = <strong>1.810 kredi</strong>. İki parça yaklaşık 3.620 kredi. Önce 480p'de dene, beğendiğini yükselt.</li>
+</ul>
+<figure><img src="img/02_ayarlar.jpg" alt="OpenArt Seedance 2.5 ayarları: 9:16, 480p, 30 saniye, ses açık; Oluştur düğmesinde 1.810 kredi" loading="lazy"><figcaption>OpenArt Seedance 2.5 ayarları: 9:16, 480p, 30 saniye, ses açık; Oluştur düğmesinde 1.810 kredi</figcaption></figure>
+<h2>1. Fikir: iki taraf, iki koruyucu, tek top</h2>
+<p>Fikrin özü şu: iki kaptan meydan okuyor, aslan ve kanarya koruyucu olarak sahada duruyor, film ortada duran topla bitiyor. <strong>Kazanan gösterilmez</strong>, böylece iki tarafın taraftarı da paylaşır.</p>
+<h2>2. Karakter kartları (GPT Image 2.5, her biri ayrı üretim)</h2>
+<p>İki takıma ikişer özgün oyuncu tasarla. Kalıp şu:</p>
+<div class="kod"><button onclick="kopyala(this)">Kopyala</button><pre><code>Character reference sheet, 4 views on neutral dark grey background (front, 3/4, profile, close-up face), same lighting. Original fictional footballer, [yaş], [yüz, saç, sakal], NOT resembling any real person or athlete. Wears a plain [yellow-and-crimson / yellow-and-deep-navy] football kit with no logos, no badges, no numbers, no sponsor text, plain unbranded boots. Photorealistic.</code></pre></div>
+<p>Kartları video sekmesine <strong>@image1–@image4</strong> olarak, stadyum görselini <strong>@image5</strong> olarak yükle.</p>
+<figure><img src="img/03_referans_paneli.jpg" alt="Görsel referanslar paneli: @image1–@image4 karakter kartların, @image5 stadyum görseli (küçük resimler temsilî, bulanıklaştırıldı)" loading="lazy"><figcaption>Görsel referanslar paneli: @image1–@image4 karakter kartların, @image5 stadyum görseli (küçük resimler temsilî, bulanıklaştırıldı)</figcaption></figure>
+<h2>3. PART ONE prompt'u: "Meydan okuma" (30 sn)</h2>
+<div class="kod"><button onclick="kopyala(this)">Kopyala</button><pre><code>Create PART ONE of a two-part cinematic Istanbul football derby fantasy.
+
+OUTPUT:
+30 seconds. Vertical 9:16. Photorealistic live-action sports fantasy.
+Generate synchronized Turkish dialogue, cinematic music and stadium sound.
+This is a fictional pre-match film.
+
+REFERENCE CAST (all original fictional characters):
+@image1 = GS-A, first crimson-team captain (character card).
+@image2 = GS-B, second crimson-team player (character card).
+@image3 = FB-A, first navy-team captain (character card).
+@image4 = FB-B, second navy-team player (character card).
+@image5 = stadium architecture and pitch layout.
+Each card defines one separate original character. Keep each face identical in every shot.
+No real person likeness. Exactly four featured players. Do not duplicate their faces in the crowd.
+Never speak reference labels or production instructions.
+
+SETTING:
+One Istanbul stadium at night. Preserve the roof, seating tiers, entrances and pitch geometry of @image5.
+Wet green grass, coherent white markings, fine rain and low mist.
+Neutral lighting on faces; restrained team-coloured light behind them.
+
+TEAM CONTINUITY:
+GS-A and GS-B occupy SCREEN LEFT, facing right. FB-A and FB-B occupy SCREEN RIGHT, facing left.
+Maintain this camera axis throughout.
+Crimson team: yellow-and-crimson kits. Navy team: yellow-and-deep-navy kits.
+Plain unbranded kits, boots and an unbranded white match ball. No sportswear logos.
+No sponsor lettering, badges, names or numbers. Advertising boards remain dark.
+Flags and scarves are plain team colours. No subtitles, titles, watermarks or generated writing.
+
+SUPPORTERS:
+Crimson-team supporters in the left sections, navy-team supporters in the right sections,
+separated by a clear architectural boundary. Both sides packed, passionate and equally formidable.
+Reactions follow the speaking player&#x27;s team. Crowd audio: nonverbal cheering and clapping only.
+
+LION GUARDIAN (left side):
+ONE majestic oversized lion with a dark mane, realistic anatomy, heavy paws, wet fur, natural breathing,
+restrained crimson-and-gold embers in the mane. Walks freely without a chain. Same appearance and scale throughout.
+
+CANARY GUARDIAN (right side):
+ONE giant yellow CANARY with an athletic adult songbird silhouette: defined neck, streamlined torso,
+strong wing shoulders, layered yellow flight feathers, short conical beak, natural eyes,
+slightly raised crown feathers, fierce alert posture. Never a round baby-bird mascot, eagle, hawk, dragon or phoenix.
+
+CANARY MOTION:
+When airborne: clear forward flight path, visible complete wing strokes (upstroke, articulated downstroke,
+feather spread, recovery), tail steering, feet tucked. Never suspended in the air with closed wings and dangling feet.
+When perched: breathing, small head turns, wind in its feathers.
+
+VOICE CAST (four distinct original male voices):
+GS-A: deep resonant baritone, powerful controlled confidence.
+GS-B: smooth medium register, cool and sharply articulated.
+FB-A: deep gravelly bass-baritone, measured commanding authority.
+FB-B: brighter medium register, agile rhythm and fearless confidence.
+
+DIALOGUE:
+Natural, clearly articulated Turkish. Speak only the exact Turkish lines in the timeline.
+No translation, paraphrasing, narrator or additional words. One speaker at a time.
+Only the active speaker moves his lips. Stable medium close-ups with visible mouth and jaw.
+Finish every line before cutting. Voices above music, crowd and weather.
+After each sentence a short beat, then that speaker&#x27;s supporters erupt.
+
+TIMELINE:
+0.0–1.2s: Extreme low close-up of the lion&#x27;s paw landing on wet grass. Splash, a few embers, one deep bass impact.
+1.2–2.5s: Low-angle view of the canary on a ledge above the right entrance; it opens both wings and launches with one powerful downstroke. Wingbeat sound. No dialogue.
+2.5–8.0s: GS-A medium close-up, screen left, GS-B softly behind, the lion farther behind. He looks across the pitch.
+  Speak 3.0–6.9: &quot;Burası İstanbul! Bu gece, tarihi biz yazacağız!&quot; Left crowd roars after the line.
+8.0–13.5s: FB-A equally powerful close-up, screen right, FB-B behind; the canary perched on the right entrance in the distance.
+  Speak 8.5–12.3: &quot;Tarih, sözle yazılmaz! Karşınızda biz varız!&quot; Right crowd answers.
+13.5–19.0s: GS-B medium close-up, half-smile.
+  Speak 14.0–17.9: &quot;Bu sahayı size dar edeceğiz. Hazır olun!&quot;
+19.0–24.5s: FB-B matching medium close-up, fearless eye contact.
+  Speak 19.5–23.3: &quot;Önce bizi geçin! Sonra konuşuruz!&quot; His supporters roar.
+24.5–27.5s: Symmetrical wide shot; both pairs approach the centre mark, the lion beside the left pair, the canary flying behind and above the right pair with at least two complete wingbeat cycles, full wingspan in frame. Drums rise. No speech.
+27.5–30.0s: Low close-up of ONE unbranded football on the white centre mark; four plain boots at the edges, two left, two right. The ball remains still, the camera settles, hold the final composition for one full second. Rain, low crowd rumble, unresolved musical tension. No fade, no title.
+
+PRIORITIES: exact intelligible Turkish dialogue; stable faces and distinct voices; consistent kits, guardians and stadium; readable movement over excessive effects; sporting defiance without weapons, assaults or animal combat; no winner, no victory celebration.</code></pre></div>
+<figure><img src="img/04_prompt_part1.jpg" alt="PART ONE prompt&#x27;unun video panelindeki hâli: takım renkleri, taraftar ve koruyucu bölümleri" loading="lazy"><figcaption>PART ONE prompt&#x27;unun video panelindeki hâli: takım renkleri, taraftar ve koruyucu bölümleri</figcaption></figure>
+<h2>4. Devamlılık hilesi: son kare = yeni başlangıç</h2>
+<p>PART ONE bitince <strong>son kareyi</strong> ekran görüntüsü olarak al (oynatıcı düğmeleri görünmesin), video sekmesine <strong>@image6</strong> olarak yükle. PART TWO bu kareden başlar ve iki video tek film gibi akar.</p>
+<figure><img src="img/05_son_kare.jpg" alt="PART ONE&#x27;ın son karesi: top orta noktada, iki yanda kramponlar; PART TWO bu kareden başlar" loading="lazy"><figcaption>PART ONE&#x27;ın son karesi: top orta noktada, iki yanda kramponlar; PART TWO bu kareden başlar</figcaption></figure>
+<figure><img src="img/06_image6.jpg" alt="Son kare @image6 olarak referans paneline eklenmiş hâli" loading="lazy"><figcaption>Son kare @image6 olarak referans paneline eklenmiş hâli</figcaption></figure>
+<h2>5. PART TWO prompt'u: "Cevap sahada" (30 sn)</h2>
+<div class="kod"><button onclick="kopyala(this)">Kopyala</button><pre><code>Create PART TWO, the concluding 30-second chapter of the same cinematic Istanbul football derby fantasy.
+30 seconds, vertical 9:16. Photorealistic live-action sports fantasy.
+Generate synchronized Turkish dialogue, cinematic music, stadium ambience and realistic sound effects.
+
+REFERENCES: @image1 = GS-A, @image2 = GS-B, @image3 = FB-A, @image4 = FB-B (original character cards, same faces as PART ONE, no real person likeness), @image5 = stadium architecture, @image6 = the ACTUAL final frame of PART ONE and the opening composition.
+
+OPENING CONTINUITY (highest visual priority):
+Begin with the composition of @image6: same low camera, perspective, unbranded ball, boot arrangement, socks, grass and white marking. Do not invent extra legs. This is a continuation, not a new establishing shot.
+
+WORLD, TEAM CONTINUITY, TEXT RULES, SUPPORTERS, GUARDIANS, VOICE CAST and DIALOGUE RULES: identical to PART ONE.
+
+TIMELINE:
+0.0–2.5s: Continue @image6. Fine rain, subtle weight shifts, the ball motionless, very slow push toward the ball. One deep heartbeat-like drum.
+2.5–8.0s: GS-A medium close-up, screen left, looking at FB-A.
+  Speak 3.0–6.9: &quot;İstanbul bizim! Son düdüğe kadar buradayız!&quot; Left supporters erupt.
+8.0–13.5s: FB-A matching close-up; the canary perched in the distance.
+  Speak 8.5–12.5: &quot;İstanbul&#x27;u istiyorsanız, önce bizi geçeceksiniz!&quot; Right crowd answers.
+13.5–17.5s: GS-B medium close-up.
+  Speak 13.9–16.7: &quot;Doksan dakika… Bir an bile rahat yok!&quot; Brief pause after &quot;dakika&quot;.
+17.5–21.5s: FB-B medium close-up, a confident nod.
+  Speak 17.9–20.7: &quot;Size de yok! Şimdi, sahada görüşürüz!&quot; Music rises after the sentence.
+21.5–26.5s: Low wide view of the centre circle; GS-A takes ONE controlled touch, FB-A closes into a defensive stance, the others move into support. Clean boot-to-ball contact, no tackles, no tangled limbs. Cut before the contest. The lion watches from the left touchline.
+26.5–30.0s: High wide view; the canary launches and flies a broad arc above the right stands with a complete wingbeat; the lion raises its head; crimson-gold light rises through the left flags, yellow-navy light through the right flags, and the two light waves meet above the centre circle in one luminous pulse. Both sections erupt. Drums, one lion roar, a strong wingbeat, one final musical impact. Leave the centre uncluttered for a title. No score, no winner.
+
+FINAL PRIORITIES: clear exact Turkish dialogue and correct speaking faces; continuity with @image6; stable identities, kits and screen direction; natural guardian movement; restrained effects. No weapons, assaults, injuries or animal combat. Conclude at the peak of anticipation.</code></pre></div>
+<figure><img src="img/07_kanarya.jpg" alt="Kanarya koruyucu, yağmur altında stadyumun çatısında" loading="lazy"><figcaption>Kanarya koruyucu, yağmur altında stadyumun çatısında</figcaption></figure>
+<h2>6. Neden çalışıyor? 7 profesyonel kural</h2>
+<ol>
+<li><strong>Tek eksen kuralı:</strong> Bir takım hep solda, öbürü hep sağda. Kesmeler kafa karıştırmaz.</li>
+<li><strong>Repliğin zamanı yazılı:</strong> "Speak 3.0–6.9" gibi saniye aralığı, dudak senkronunu tutturur.</li>
+<li><strong>Bir konuşan, diğerleri ağzı kapalı:</strong> Yanlış ağız oynaması biter.</li>
+<li><strong>Ses tarifi:</strong> Dört ayrı ses tipi, iki parçada aynı kalır.</li>
+<li><strong>Yazı yasağı:</strong> Model harf üretirse bozar. Yazıları kurguda biz ekleriz.</li>
+<li><strong>Koruyucuya hareket tarifi:</strong> "Havada donma" hatasının ilacı, kanat vuruşunu adım adım yazmak.</li>
+<li><strong>Kazanan yok:</strong> Film maçın heyecanında biter, iki taraf da paylaşır.</li>
+</ol>
+<h2>7. Kurgu</h2>
+<figure><img src="img/08_top_final.jpg" alt="Final: top orta noktada, iki tarafın kramponları hazır" loading="lazy"><figcaption>Final: top orta noktada, iki tarafın kramponları hazır</figcaption></figure>
+<ul>
+<li>İki parçayı arka arkaya koy; birleşme noktasındaki top karesini 0,5 sn kısalt.</li>
+<li>Altyazılar: replikler, kalın ve beyaz, alt üçte birde.</li>
+<li>Sonuna 9 sn kapanış: "Yorumlara REHBER yaz · Devamı için takip et · @yapayburlab".</li>
+<li>Açıklamanın ilk satırı: "Bağımsız taraftar çalışmasıdır; kulüplerle bağlantılı değildir, sponsorlu ya da onaylı değildir. AI ile üretildi." Platformun AI etiketini de aç.</li>
+</ul>
+<h2>8. Aynı tekniği başka konulara uygula (3 örnek)</h2>
+<p><strong>Örnek A, mahalle düellosu (sınırsız seri):</strong> Kadıköy martısı ve Beşiktaş kedisi koruyucu olarak duruyor. İki esnaf kaptan simit mi poğaça mı diye meydan okuyor. Final: tezgâhın ortasında tek bir çay bardağı. Eksen kuralı, replik saniyeleri ve son kare devamı aynen geçerli.</p>
+<p><strong>Örnek B, marka için reklam düellosu (işletmeler için):</strong> Bir kahve markasının iki ürünü (espresso ve soğuk kahve) iki karakter oluyor, koruyucular ateş ve buz. Replikler ürün özelliklerinden, final fincanların ortasında. Gerçek marka için mutlaka izinle ve "Örnek çalışma" etiketiyle.</p>
+<p><strong>Örnek C, tarih düellosu (eğitici):</strong> 1453'te iki usta mimar bir kubbe yarışında. Koruyucular kartal ve geyik. Final kare yarım kalmış kubbenin tepesindeki son taş. Şiddet yok, rekabet ustalıkta.</p>
+<p>Her örnekte değişen sadece 4 şey var: <strong>kadro kartları, koruyucular, replikler ve final nesnesi.</strong> Prompt iskeletinin geri kalanı aynı kalıyor.</p>
+<h2>9. Şimdi sen</h2>
+<p>Kendi derbin için iki koruyucu hayvan seç, dört özgün kaptan kartı üret, replikleri kendi şehrine göre yaz. Sonucu bizi etiketleyerek paylaş, en iyilerini kanalımızda gösterelim.</p>
+<p>Bu tür videoların devamı için takip et: <strong>@yapayburlab</strong> (Instagram · TikTok · YouTube)</p>
+<p>← <a href="https://yapayburlab.github.io/" target="_blank" rel="noopener">Ana rehber merkezi</a></p>
+<footer>Yapay Zekânın Gücü, Üretimin Geleceği! · YouTube · Instagram · TikTok: <b>@yapayburlab</b><br>
+İş birliği: <a href="mailto:yapayburlab@hotmail.com">yapayburlab@hotmail.com</a><br>Bu sayfa Yapay BurLab Fabrikası'nda hazırlandı; içerik yapay zekâ destekli üretildi ve kontrol edildi.</footer>
+</div><script>function kopyala(b){navigator.clipboard.writeText(b.nextElementSibling.innerText).then(()=>{b.textContent='Kopyalandı ✓';setTimeout(()=>b.textContent='Kopyala',1500)})}
+const a=document.querySelector('.ara');if(a)a.oninput=()=>{const q=a.value.toLocaleLowerCase('tr');document.querySelectorAll('a.kart').forEach(k=>k.style.display=k.dataset.k.includes(q)?'':'none')}</script></body></html>
