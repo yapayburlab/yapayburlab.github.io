@@ -1,0 +1,25 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rehber merkezi · Yapay BurLab</title><meta name="description" content="Yapay BurLab videolarındaki kurulum rehberleri ve kaynaklar.">
+<meta property="og:title" content="Rehber merkezi"><meta property="og:description" content="Yapay BurLab videolarındaki kurulum rehberleri ve kaynaklar."><meta property="og:image" content="logo.png">
+<link rel="icon" href="logo.png"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@800&family=JetBrains+Mono&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<style>:root{--bg:#070B14;--kart:#0D1424;--cizgi:#1E2A44;--yazi:#E8EEF8;--soluk:#8A97B0;--p:#22E6FF;--s:#A95BFF;--w:#FFD23F;--ok:#2EE59D}
+*{box-sizing:border-box}html{background:var(--bg)}body{margin:0;background:var(--bg) radial-gradient(80% 900px at 50% 0,#12224a 0,var(--bg) 70%) no-repeat;min-height:100vh;color:var(--yazi);font:17px/1.65 Montserrat,system-ui,sans-serif}
+.kap{max-width:760px;margin:0 auto;padding:28px 16px 60px}header{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+header img{width:48px;height:48px}header b{font-family:'Exo 2',sans-serif;font-size:22px}header span{color:var(--soluk);font:14px 'JetBrains Mono',monospace}
+h1{font-family:'Exo 2',sans-serif;font-weight:800;font-size:clamp(28px,6vw,40px);line-height:1.15;margin:.2em 0 .5em}
+h2{font-family:'Exo 2',sans-serif;color:var(--p);margin-top:1.8em}h3{margin-top:1.6em}
+.rozet{display:inline-block;padding:4px 12px;border:1.5px solid var(--p);border-radius:20px;font:13px 'JetBrains Mono',monospace;color:var(--p);letter-spacing:2px}
+.kod{position:relative;background:#04080F;border:1px solid var(--cizgi);border-radius:12px;margin:14px 0}
+.kod pre{margin:0;padding:44px 16px 16px;overflow-x:auto;font:14px/1.5 'JetBrains Mono',monospace}.kod button{position:absolute;top:8px;right:8px;background:var(--p);color:#04121A;border:0;border-radius:8px;padding:5px 12px;font-weight:700;cursor:pointer}
+code{font-family:'JetBrains Mono',monospace;background:#101a2e;padding:1px 6px;border-radius:6px;font-size:.9em}.kod code{background:none;padding:0}
+.ipucu{border-left:3px solid var(--w);background:rgba(255,210,63,.07);padding:10px 14px;border-radius:0 10px 10px 0;margin:12px 0}
+a{color:var(--p)}.liste a.kart{display:block;text-decoration:none;color:var(--yazi);background:var(--kart);border:1px solid var(--cizgi);border-radius:16px;padding:18px;margin:12px 0}
+.liste a.kart:hover{border-color:var(--p)}.liste small{color:var(--soluk)}footer{margin-top:50px;padding-top:20px;border-top:1px solid var(--cizgi);color:var(--soluk);font-size:14px}
+.ara{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--cizgi);background:var(--kart);color:var(--yazi);font-size:16px}</style></head><body><div class="kap">
+<header><a href=""><img src="logo.png" alt="Yapay BurLab"></a><div><b>Yapay BurLab</b><br><span>@yapayburlab · Rehber merkezi</span></div></header>
+<h1>Rehber merkezi</h1><p>Videoda yorumlara yazdığın kelimeyi aşağıda bul, rehberi aç. Her rehber adım adım ve kopyalanabilir komutlarla hazırlanır.</p><input class="ara" placeholder="Kelime ara: ör. fabrika"><div class="liste"><a class="kart" href="fabrika/" data-k="fabrika claude code ile kendi video fabrikanı kur: windows başlangıç rehberi"><span class="rozet">FABRİKA</span><h3 style="margin:.5em 0 .2em">Claude Code ile kendi video fabrikanı kur: Windows başlangıç rehberi</h3><small>2026-10-25</small></a></div>
+<footer>Yapay Zekânın Gücü, Üretimin Geleceği! · YouTube · Instagram · TikTok: <b>@yapayburlab</b><br>
+İş birliği: <a href="mailto:yapayburlab@hotmail.com">yapayburlab@hotmail.com</a><br>Bu sayfa Yapay BurLab Fabrikası'nda hazırlandı; içerik yapay zekâ destekli üretildi ve kontrol edildi.</footer>
+</div><script>function kopyala(b){navigator.clipboard.writeText(b.nextElementSibling.innerText).then(()=>{b.textContent='Kopyalandı ✓';setTimeout(()=>b.textContent='Kopyala',1500)})}
+const a=document.querySelector('.ara');if(a)a.oninput=()=>{const q=a.value.toLocaleLowerCase('tr');document.querySelectorAll('a.kart').forEach(k=>k.style.display=k.dataset.k.includes(q)?'':'none')}</script></body></html>

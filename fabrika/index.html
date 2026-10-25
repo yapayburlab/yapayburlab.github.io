@@ -1,0 +1,130 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Claude Code ile kendi video fabrikanı kur: Windows başlangıç rehberi · Yapay BurLab</title><meta name="description" content="Fabrika nedir, neden parçalara ayrılır? Bir kısa video altı işten geçer. Her işi ayrı düşünmek, Claude Code&#x27;a da ayrı ayrı öğretmek demek:  Araştırma: Konu">
+<meta property="og:title" content="Claude Code ile kendi video fabrikanı kur: Windows başlangıç rehberi"><meta property="og:description" content="Fabrika nedir, neden parçalara ayrılır? Bir kısa video altı işten geçer. Her işi ayrı düşünmek, Claude Code&#x27;a da ayrı ayrı öğretmek demek:  Araştırma: Konu"><meta property="og:image" content="../logo.png">
+<link rel="icon" href="../logo.png"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@800&family=JetBrains+Mono&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<style>:root{--bg:#070B14;--kart:#0D1424;--cizgi:#1E2A44;--yazi:#E8EEF8;--soluk:#8A97B0;--p:#22E6FF;--s:#A95BFF;--w:#FFD23F;--ok:#2EE59D}
+*{box-sizing:border-box}html{background:var(--bg)}body{margin:0;background:var(--bg) radial-gradient(80% 900px at 50% 0,#12224a 0,var(--bg) 70%) no-repeat;min-height:100vh;color:var(--yazi);font:17px/1.65 Montserrat,system-ui,sans-serif}
+.kap{max-width:760px;margin:0 auto;padding:28px 16px 60px}header{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+header img{width:48px;height:48px}header b{font-family:'Exo 2',sans-serif;font-size:22px}header span{color:var(--soluk);font:14px 'JetBrains Mono',monospace}
+h1{font-family:'Exo 2',sans-serif;font-weight:800;font-size:clamp(28px,6vw,40px);line-height:1.15;margin:.2em 0 .5em}
+h2{font-family:'Exo 2',sans-serif;color:var(--p);margin-top:1.8em}h3{margin-top:1.6em}
+.rozet{display:inline-block;padding:4px 12px;border:1.5px solid var(--p);border-radius:20px;font:13px 'JetBrains Mono',monospace;color:var(--p);letter-spacing:2px}
+.kod{position:relative;background:#04080F;border:1px solid var(--cizgi);border-radius:12px;margin:14px 0}
+.kod pre{margin:0;padding:44px 16px 16px;overflow-x:auto;font:14px/1.5 'JetBrains Mono',monospace}.kod button{position:absolute;top:8px;right:8px;background:var(--p);color:#04121A;border:0;border-radius:8px;padding:5px 12px;font-weight:700;cursor:pointer}
+code{font-family:'JetBrains Mono',monospace;background:#101a2e;padding:1px 6px;border-radius:6px;font-size:.9em}.kod code{background:none;padding:0}
+.ipucu{border-left:3px solid var(--w);background:rgba(255,210,63,.07);padding:10px 14px;border-radius:0 10px 10px 0;margin:12px 0}
+a{color:var(--p)}.liste a.kart{display:block;text-decoration:none;color:var(--yazi);background:var(--kart);border:1px solid var(--cizgi);border-radius:16px;padding:18px;margin:12px 0}
+.liste a.kart:hover{border-color:var(--p)}.liste small{color:var(--soluk)}footer{margin-top:50px;padding-top:20px;border-top:1px solid var(--cizgi);color:var(--soluk);font-size:14px}
+.ara{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--cizgi);background:var(--kart);color:var(--yazi);font-size:16px}</style></head><body><div class="kap">
+<header><a href="../"><img src="../logo.png" alt="Yapay BurLab"></a><div><b>Yapay BurLab</b><br><span>@yapayburlab · Rehber merkezi</span></div></header>
+<span class="rozet">YORUM KELİMESİ: FABRİKA</span><h1>Claude Code ile kendi video fabrikanı kur: Windows başlangıç rehberi</h1><p>Bu rehber bir harita. Hazır bir fabrika vermiyor; parçaları, nereden kurulduklarını ve nasıl birleştiğini gösteriyor. Sonunda kendi kurallarınla çalışan, ilk kısa videosunu üretmiş bir başlangıç fabrikan olacak. Görünümü, sesi ve kuralları senin olacak.</p>
+<h2>Fabrika nedir, neden parçalara ayrılır?</h2>
+<p>Bir kısa video altı işten geçer. Her işi ayrı düşünmek, Claude Code'a da ayrı ayrı öğretmek demek:</p>
+<ul>
+<li><strong>Araştırma:</strong> Konuyu resmi kaynaklardan doğrula. Kaynağı olmayan sayı videoya girmez.</li>
+<li><strong>Metin:</strong> Sahneleri ve okuyacağın seslendirmeyi yaz.</li>
+<li><strong>Ses:</strong> Kendi sesini kaydet ve temizle.</li>
+<li><strong>Kurgu:</strong> Görüntüleri, yazıları ve sesi birleştir, videoyu render et.</li>
+<li><strong>Kontrol:</strong> Render'a bak. Yazım hatası, taşan yazı ya da yanlış bilgi var mı?</li>
+<li><strong>Yayın:</strong> Başlık, açıklama ve etiketleri hazırla. Yayın düğmesine her zaman sen basarsın.</li>
+</ul>
+<p>Claude Code bu işleri senin bilgisayarında, senin klasöründe yapar. Ona ne yapacağını üç şeyle anlatırsın: <strong>CLAUDE.md</strong> (kurallar), <strong>alt ajanlar</strong> (uzman yardımcılar) ve <strong>skill'ler</strong> (/ ile çağrılan komutlar).</p>
+<div class="ipucu"><strong>Şimdi sen:</strong> Bu altı işten hangisi sana en çok vakit kaybettiriyor? Bir kâğıda yaz. Fabrikanı önce o işten başlayarak kuracaksın.</div>
+<h2>Gerekenler</h2>
+<ul>
+<li>Windows 10 (1809 veya üstü) ya da Windows 11, en az 4 GB RAM, internet bağlantısı</li>
+<li>Ücretli bir Claude hesabı: Pro, Max, Team, Enterprise ya da Anthropic Console. Ücretsiz claude.ai planı Claude Code'u içermez.</li>
+<li>winget (Microsoft Store'daki "Uygulama Yükleyicisi"; Windows 11'de hazır gelir)</li>
+<li>Birkaç GB boş disk alanı</li>
+</ul>
+<h2>1. Araçları resmi kaynaklarından kur</h2>
+<p>PowerShell'i <strong>normal kullanıcı olarak</strong> aç. Yönetici olarak açman gerekmez. Önce Claude Code'u resmi yükleyicisiyle kur (<a href="https://code.claude.com/docs/en/setup" target="_blank" rel="noopener">kurulum belgesi</a>):</p>
+<div class="kod"><button onclick="kopyala(this)">Kopyala</button><pre><code>irm https://claude.ai/install.ps1 | iex</code></pre></div>
+<p>Sonra video için gereken araçları winget ile kur. Hepsi ücretsiz ve resmi paketler:</p>
+<div class="kod"><button onclick="kopyala(this)">Kopyala</button><pre><code>winget install -e --id OpenJS.NodeJS.LTS
+winget install -e --id Python.Python.3.12
+winget install -e --id Gyan.FFmpeg
+winget install -e --id Git.Git</code></pre></div>
+<p>Git, Windows'ta isteğe bağlı ama önerilir. Claude Code'un Bash aracı Git Bash'i kullanır.</p>
+<p>Kurulum bitince PowerShell'i kapatıp yeniden aç ve her aracın cevap verdiğini gör:</p>
+<div class="kod"><button onclick="kopyala(this)">Kopyala</button><pre><code>claude --version
+node --version
+python --version
+ffmpeg -version</code></pre></div>
+<div class="ipucu">💡 Bir komut "tanınmıyor" diyorsa PowerShell'i kapatıp yeniden aç. Yeni kurulan araçlar ancak yeni pencerede görünür.</div>
+<div class="ipucu"><strong>Şimdi sen:</strong> Dört komutun çıktısındaki sürüm numaralarını bir not dosyasına yaz. Bir şey bozulduğunda ilk bakacağın yer burası olacak.</div>
+<h2>2. Fabrika klasörünü aç ve Claude Code'u başlat</h2>
+<p>Fabrika için kısa ve sade adlı bir klasör seç. Klasör adında Türkçe karakter ve boşluk olmasın. Klasörde PowerShell aç ve şunu yaz:</p>
+<div class="kod"><button onclick="kopyala(this)">Kopyala</button><pre><code>claude</code></pre></div>
+<p>İlk açılışta tema seçersin ve Claude hesabınla giriş yaparsın. Ardından Claude Code klasöre güvenip güvenmediğini sorar. Güven onayını vermeden önce klasörde ne olduğunu bil: başkasından aldığın bir klasörde <code>.claude/settings.json</code> varsa içindeki izin listesini oku. Bu izinler sen güven onayı verene kadar uygulanmaz.</p>
+<div class="ipucu"><strong>Şimdi sen:</strong> Claude Code'a "Bu klasörde video üretmek için hangi alt klasörleri açmalıyım? Önerini yaz, ben onaylayınca oluştur." de. Önerdiği yapıyı kendi işine göre değiştir.</div>
+<h2>3. CLAUDE.md: fabrikanın anayasası</h2>
+<p>CLAUDE.md, Claude Code'un her oturumun başında okuduğu kurallar dosyasıdır. <code>/init</code> komutu bir başlangıç dosyası üretir. Aşağıdaki boş iskeleti de kullanabilirsin. Köşeli parantezli yerleri <strong>kendin</strong> doldur:</p>
+<div class="kod"><button onclick="kopyala(this)">Kopyala</button><pre><code># [Markanın adı] video fabrikası
+
+## Kim için üretiyoruz
+- Hedef kitle: [kimler izliyor, neyi merak ediyorlar]
+- Dil ve ton: [ör. sade Türkçe, kısa cümleler]
+
+## Görünüm
+- Renkler: [1. renk], [2. renk], [3. renk]
+- Yazı tipi: [başlık fontu], [metin fontu]
+- Video biçimi: [ör. 1080x1920, en fazla 60 sn]
+
+## Kurallar
+- Kaynağı olmayan sayı ve iddia videoya girmez.
+- Hiçbir şey ben onaylamadan yayınlanmaz.
+- [senin kuralın]
+- [senin kuralın]
+
+## Klasörler
+- [projeler nerede, çıktılar nerede]</code></pre></div>
+<p>CLAUDE.md bir yönergedir, kilit değildir. Kesin yasak gereken yerler için Claude Code'un izin ayarlarını kullanırsın.</p>
+<div class="ipucu"><strong>Şimdi sen:</strong> Kendi markanın 3 rengini seç ve CLAUDE.md'ye yaz. Sonra en az iki kural ekle: biri kalite için, biri güvenlik için.</div>
+<h2>4. İlk alt ajanın: araştırmacı</h2>
+<p>Alt ajanlar <code>.claude/agents/</code> klasöründeki Markdown dosyalarıdır. Yalnızca <code>name</code> ve <code>description</code> zorunludur. Claude Code, açıklamaya bakarak işi hangi ajana vereceğine karar verir (<a href="https://code.claude.com/docs/en/sub-agents" target="_blank" rel="noopener">belge</a>). Örnek, <code>.claude/agents/arastirmaci.md</code>:</p>
+<div class="kod"><button onclick="kopyala(this)">Kopyala</button><pre><code>---
+name: arastirmaci
+description: Yeni video konusunu resmi kaynaklardan araştırır. Konu gelince ilk bunu kullan.
+---
+Verilen konuyu yalnızca resmi belgelerden araştır.
+Her bilginin yanına kaynak linkini yaz.
+Doğrulayamadığın bilgiyi &quot;doğrulanamadı&quot; diye işaretle.
+Sonucu arastirma.md dosyasına madde madde yaz.</code></pre></div>
+<p>Bir fabrikada her işin kendi ajanı olabilir: metin yazarı, kurgucu, kontrolcü. Hepsini bir günde yazma. Önce bir ajanı çalıştır, eksiğini gör, sonra yenisini ekle.</p>
+<div class="ipucu"><strong>Şimdi sen:</strong> 1. bölümde kâğıda yazdığın işin ajanını yaz. Açıklama satırına "ne zaman kullanılacağını" mutlaka ekle.</div>
+<h2>5. İlk komutun (skill)</h2>
+<p>Sık yaptığın bir işi komuta çevir. Skill'ler <code>.claude/skills/&lt;ad&gt;/SKILL.md</code> dosyasında durur, / ile çağrılır ve verdiğin metin <code>$ARGUMENTS</code> olarak gelir (<a href="https://code.claude.com/docs/en/skills" target="_blank" rel="noopener">belge</a>). En kısa hâli:</p>
+<div class="kod"><button onclick="kopyala(this)">Kopyala</button><pre><code>---
+name: konu-arastir
+description: Bir video konusunu araştırır ve özet çıkarır.
+---
+&quot;$ARGUMENTS&quot; konusunu arastirmaci ajanına araştırt.
+Sonra 5 maddelik bir özet yaz ve bana göster.</code></pre></div>
+<p>Artık Claude Code'da <code>/konu-arastir &lt;konu&gt;</code> yazman yeterli.</p>
+<h2>6. İlk videonu üret</h2>
+<p>Kurgu için Remotion kullanabilirsin. Remotion, videoyu kodla tarif etmeni sağlar; Claude Code da bu kodu yazabilir. Resmi başlangıç projesini oluştur (<a href="https://www.remotion.dev" target="_blank" rel="noopener">Remotion</a>):</p>
+<div class="kod"><button onclick="kopyala(this)">Kopyala</button><pre><code>npx create-video@latest</code></pre></div>
+<p>Sonra Claude Code'a kendi CLAUDE.md'ndeki renkleri kullanan, 9:16 biçiminde, 3 sahneli ve 15 saniyelik bir video yazdır. Bittiğinde render al:</p>
+<div class="kod"><button onclick="kopyala(this)">Kopyala</button><pre><code>npx remotion render</code></pre></div>
+<p>Render bitince Claude Code'dan videodan kareler çıkarıp bakmasını iste. Taşan yazı, okunmayan renk ya da yazım hatası varsa düzeltsin. Bu kontrol adımını atlama: fabrikayı gerçekten fabrika yapan şey budur.</p>
+<div class="ipucu">💡 Remotion bireyler ve küçük ekipler için ücretsiz. Şirketler için lisans koşulu var; ticari kullanmadan önce <a href="https://www.remotion.dev/docs/license" target="_blank" rel="noopener">lisans sayfasını</a> oku.</div>
+<div class="ipucu"><strong>Şimdi sen:</strong> İlk videonun konusunu seç ve Claude Code'a şunu söyle: "Önce araştır, sonra 3 sahne yaz, bana göster, ben onaylayınca render al." Onay adımı senin kalite kapındır.</div>
+<h2>Sık yapılan hatalar</h2>
+<ul>
+<li>✕ Türkçe karakterli dosyalar okunamıyor ("UnicodeDecodeError", cp1254) → ✓ Windows varsayılan olarak eski bir kod sayfası kullanır. Python'da dosyaları <code>open(..., encoding="utf-8")</code> ile aç ya da bir kere <code>setx PYTHONUTF8 1</code> çalıştırıp PowerShell'i yeniden başlat.</li>
+<li>✕ Kurulumu Türkçe karakterli ya da boşluklu bir yola yapmak → ✓ Kısa ve sade bir klasör adı kullan.</li>
+<li>✕ PowerShell'i yönetici olarak açmak → ✓ Normal kullanıcı yeterli. Yönetici penceresinde kurulan araçlar bazen kullanıcı oturumunda görünmez.</li>
+<li>✕ "claude" komutu tanınmıyor → ✓ PowerShell'i kapatıp yeniden aç. Hâlâ yoksa kurulum belgesindeki PATH adımına bak.</li>
+<li>✕ Güven onayını okumadan vermek → ✓ Başkasından gelen klasörde önce <code>.claude/settings.json</code> izinlerini oku.</li>
+<li>✕ Bütün fabrikayı bir günde kurmaya çalışmak → ✓ Bir ajan, bir komut, bir video. Sonra büyüt.</li>
+</ul>
+<h2>Sonraki adımlar</h2>
+<p>Fabrikanın gelişmiş parçalarını (ses temizleme, kelime kelime altyazı, marka paketi, otomatik kalite kontrol) sırayla videolarda anlatıyorum. Kaçırmamak için YouTube, Instagram ve TikTok'ta <strong>@yapayburlab</strong> hesabını takip et. Kurarken takıldığın yeri videonun altına yorum olarak yaz.</p>
+<p>🎬 Bu rehberin videosu: YouTube, Instagram ve TikTok'ta @yapayburlab</p>
+<p>Bu yöntem Yapay BurLab Fabrikası'nda geliştirildi.</p>
+<footer>Yapay Zekânın Gücü, Üretimin Geleceği! · YouTube · Instagram · TikTok: <b>@yapayburlab</b><br>
+İş birliği: <a href="mailto:yapayburlab@hotmail.com">yapayburlab@hotmail.com</a><br>Bu sayfa Yapay BurLab Fabrikası'nda hazırlandı; içerik yapay zekâ destekli üretildi ve kontrol edildi.</footer>
+</div><script>function kopyala(b){navigator.clipboard.writeText(b.nextElementSibling.innerText).then(()=>{b.textContent='Kopyalandı ✓';setTimeout(()=>b.textContent='Kopyala',1500)})}
+const a=document.querySelector('.ara');if(a)a.oninput=()=>{const q=a.value.toLocaleLowerCase('tr');document.querySelectorAll('a.kart').forEach(k=>k.style.display=k.dataset.k.includes(q)?'':'none')}</script></body></html>
