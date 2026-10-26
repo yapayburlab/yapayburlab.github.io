@@ -1,0 +1,88 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>&quot;Metin duvarı&quot; yerine tek sayfa: answer-me-with-html rehberi · Yapay BurLab</title><meta name="description" content="Neden bu araç? Yapay zekâya &quot;TCP üçlü el sıkışmasını anlat&quot; dediğinde çoğu zaman satır satır okunacak bir metin duvarı gelir. Aynı soruyu bu araçla sorduğu">
+<meta property="og:title" content="&quot;Metin duvarı&quot; yerine tek sayfa: answer-me-with-html rehberi"><meta property="og:description" content="Neden bu araç? Yapay zekâya &quot;TCP üçlü el sıkışmasını anlat&quot; dediğinde çoğu zaman satır satır okunacak bir metin duvarı gelir. Aynı soruyu bu araçla sorduğu"><meta property="og:image" content="../logo.png">
+<link rel="icon" href="../logo.png"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@800&family=JetBrains+Mono&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<style>:root{--bg:#070B14;--kart:#0D1424;--cizgi:#1E2A44;--yazi:#E8EEF8;--soluk:#8A97B0;--p:#22E6FF;--s:#A95BFF;--w:#FFD23F;--ok:#2EE59D}
+*{box-sizing:border-box}html{background:var(--bg)}body{margin:0;background:var(--bg) radial-gradient(80% 900px at 50% 0,#12224a 0,var(--bg) 70%) no-repeat;min-height:100vh;color:var(--yazi);font:17px/1.65 Montserrat,system-ui,sans-serif}
+.kap{max-width:760px;margin:0 auto;padding:28px 16px 60px}header{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+header img{width:48px;height:48px}header b{font-family:'Exo 2',sans-serif;font-size:22px}header span{color:var(--soluk);font:14px 'JetBrains Mono',monospace}
+h1{font-family:'Exo 2',sans-serif;font-weight:800;font-size:clamp(28px,6vw,40px);line-height:1.15;margin:.2em 0 .5em}
+h2{font-family:'Exo 2',sans-serif;color:var(--p);margin-top:1.8em}h3{margin-top:1.6em}
+.rozet{display:inline-block;padding:4px 12px;border:1.5px solid var(--p);border-radius:20px;font:13px 'JetBrains Mono',monospace;color:var(--p);letter-spacing:2px}
+.kod{position:relative;background:#04080F;border:1px solid var(--cizgi);border-radius:12px;margin:14px 0}
+.kod pre{margin:0;padding:44px 16px 16px;overflow-x:auto;font:14px/1.5 'JetBrains Mono',monospace}.kod button{position:absolute;top:8px;right:8px;background:var(--p);color:#04121A;border:0;border-radius:8px;padding:5px 12px;font-weight:700;cursor:pointer}
+code{font-family:'JetBrains Mono',monospace;background:#101a2e;padding:1px 6px;border-radius:6px;font-size:.9em}.kod code{background:none;padding:0}
+.ipucu{border-left:3px solid var(--w);background:rgba(255,210,63,.07);padding:10px 14px;border-radius:0 10px 10px 0;margin:12px 0}
+a{color:var(--p)}.liste a.kart{display:block;text-decoration:none;color:var(--yazi);background:var(--kart);border:1px solid var(--cizgi);border-radius:16px;padding:18px;margin:12px 0}
+.liste a.kart:hover{border-color:var(--p)}.liste small{color:var(--soluk)}footer{margin-top:50px;padding-top:20px;border-top:1px solid var(--cizgi);color:var(--soluk);font-size:14px}
+figure{margin:18px 0}figure img{display:block;max-width:100%;max-height:85vh;width:auto;height:auto;margin:0 auto;border-radius:12px;border:1px solid var(--cizgi)}figcaption{color:var(--soluk);font-size:14px;margin-top:6px}
+.tablo{overflow-x:auto;margin:14px 0}.tablo table{border-collapse:collapse;width:100%;font-size:15px}.tablo th,.tablo td{border:1px solid var(--cizgi);padding:8px 10px;text-align:left;vertical-align:top}.tablo th{background:var(--kart);color:var(--p)}
+hr{border:0;border-top:1px solid var(--cizgi);margin:28px 0}
+.ara{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--cizgi);background:var(--kart);color:var(--yazi);font-size:16px}</style></head><body><div class="kap">
+<header><a href="../"><img src="../logo.png" alt="Yapay BurLab"></a><div><b>Yapay BurLab</b><br><span>@yapayburlab · Rehber merkezi</span></div></header>
+<span class="rozet">YORUM KELİMESİ: HTML</span><h1>&quot;Metin duvarı&quot; yerine tek sayfa: answer-me-with-html rehberi</h1><div class="ipucu">Bu araç, yapay zekânın uzun cevabını okunabilir tek bir web sayfasına çevirir: diyagram, akış şeması, tablo ve uyarı aynı sayfada. Açık kaynak (MIT), çevrimdışı açılır. Bu rehberde sıfırdan kurup ilk sayfanı üretiyorsun.</div>
+<div class="ipucu">🧪 Yapay BurLab olarak kum havuzunda test ettik (26.10.2026, v0.5.10, Windows 11, Node 24): kurulum, sayfa çizimi ve açıklayıcı video çalıştı. Bizim denememizde Claude Code aracı <strong>kendiliğinden kullanmadı</strong>: aynı soruya düz metin verdi. <code>/answer-me-with-html</code> komutuyla çağırınca 6 panelli sayfa çıktı (oturum 20 sn). Denememiz etkileşimsiz modda (claude -p) yapıldı; normal sohbet oturumunda davranış farklı olabilir.</div>
+<div class="ipucu">Araç bağımsız bir geliştiriciye aittir (QingYunA). Yapay BurLab ile bağlantılı değildir; bu sayfa tanıtım ve öğretim amaçlıdır.</div>
+<h2>Neden bu araç?</h2>
+<p>Yapay zekâya "TCP üçlü el sıkışmasını anlat" dediğinde çoğu zaman satır satır okunacak bir <strong>metin duvarı</strong> gelir. Aynı soruyu bu araçla sorduğunda sıra diyagramını, durum akışını ve bayrak tablosunu <strong>tek bakışta</strong> görürsün.</p>
+<p>Reponun kendi ölçümü (3 konu × 3 deneme, Claude Sonnet 5.5, sade Claude Code kurulumu):</p>
+<div class="tablo"><table><thead><tr><th></th><th>Doğrudan HTML iste</th><th>answer-me-with-html</th></tr></thead><tbody><tr><td>Modelin yazdığı token</td><td>4.893</td><td><strong>612</strong> (yaklaşık 8 kat az)</td></tr><tr><td>Süre</td><td>31 sn</td><td><strong>12 sn</strong> (yaklaşık 2,6 kat hızlı)</td></tr></tbody></table></div>
+<p>Neden: Model yalnızca kısa bir Markdown taslağı yazar; sayfanın yerleşimini, rengini ve çizimini aracın kendi komut satırı programı yapar. Not: Repo, faturadaki düşüşün daha küçük olduğunu (bu testte yaklaşık %15) açıkça yazıyor, çünkü model her turda sohbeti yine okur.</p>
+<div class="ipucu"><strong>Şimdi sen:</strong> En son yapay zekâya sorduğun ve cevabını okurken kaybolduğun soruyu bir kenara yaz. Kurulumdan sonra ilk onu soracaksın.</div>
+<h2>Gereken</h2>
+<ul>
+<li><strong>Node.js 20 veya üzeri.</strong> Kontrol için terminale yaz:</li>
+</ul>
+<div class="kod"><button onclick="kopyala(this)">Kopyala</button><pre><code>node -v</code></pre></div>
+<ul>
+<li>Bir yapay zekâ ajanı: <strong>Claude Code</strong>, Codex, Cursor ya da OpenCode. Biz Claude Code ile gösteriyoruz.</li>
+<li>İlk kurulum için internet.</li>
+</ul>
+<h2>Kurulum</h2>
+<p><strong>Tek komutla (önerdiğimiz yol, bizim test ettiğimiz komut).</strong> Proje klasöründe terminali aç ve çalıştır. <code>-g</code> eklemediğin için araç yalnız o klasöre kurulur:</p>
+<div class="kod"><button onclick="kopyala(this)">Kopyala</button><pre><code>npx skills add QingYunA/answer-me-with-html -a claude-code -y</code></pre></div>
+<p><code>-a claude-code</code> Claude Code'a kurar. README'ye göre <code>-a</code> yazmazsan hangi ajana kurulacağını sorar (bunu biz denemedik).</p>
+<p><strong>Claude Code eklentisi (reponun yolu).</strong> Claude Code'un içinde sırayla çalıştır. Eklenti kullanıcı hesabın genelinde kurulur:</p>
+<div class="kod"><button onclick="kopyala(this)">Kopyala</button><pre><code>/plugin marketplace add QingYunA/answer-me-with-html</code></pre></div>
+<div class="kod"><button onclick="kopyala(this)">Kopyala</button><pre><code>/plugin install answer-me-with-html@answer-me-with-html</code></pre></div>
+<p><strong>Ajana kurdurmak (repo bu yolu öneriyor; biz kullanmadık).</strong> Önce dosyayı kendin aç ve oku: github.com/QingYunA/answer-me-with-html/blob/main/INSTALL.md. Bir ajana internetten talimat okutmak, o talimatlara güvenmek demektir. Bu yolun yedek komutu aracı bilgisayarın geneline (<code>-g</code>) kurar. Okuduktan sonra istersen ajana şunu yapıştır:</p>
+<div class="kod"><button onclick="kopyala(this)">Kopyala</button><pre><code>Install Answer me with HTML: read https://raw.githubusercontent.com/QingYunA/answer-me-with-html/main/INSTALL.md and follow it.</code></pre></div>
+<div class="ipucu"><strong>Şimdi sen:</strong> Claude Code'u kurduğun klasörde yeniden aç ve şunu yaz:</div>
+<div class="ipucu">```</div>
+<div class="ipucu">/answer-me-with-html TCP üçlü el sıkışmasını açıkla</div>
+<div class="ipucu">```</div>
+<div class="ipucu">Sayfa açıldıysa kurulum tamam. Komutsuz sorarsan araç her zaman devreye girmeyebilir; bizim denememizde girmedi.</div>
+<h2>İlk sayfanı üret</h2>
+<p>Kurulumdan sonra sorunun başına komutu ekle (bizim denememizde en güvenilir yol buydu):</p>
+<div class="kod"><button onclick="kopyala(this)">Kopyala</button><pre><code>/answer-me-with-html TCP üçlü el sıkışmasını açıkla</code></pre></div>
+<div class="kod"><button onclick="kopyala(this)">Kopyala</button><pre><code>/answer-me-with-html Redis mi Memcached mi, önbellek için?</code></pre></div>
+<div class="kod"><button onclick="kopyala(this)">Kopyala</button><pre><code>/answer-me-with-html Git rebase nasıl çalışır?</code></pre></div>
+<p>Ajan kısa bir Markdown taslağı yazar ve araca verir; sayfa tarayıcıda açılır. Sayfalar kullanıcı klasöründeki <code>.answer-me-with-html/pages</code> klasörüne kaydedilir. Sağ üstteki düğmelerle tema ve açık/koyu mod değişir; "Copy source" sayfayı üreten Markdown'ı geri verir.</p>
+<h2>Ne sorarsan ne alırsın</h2>
+<div class="tablo"><table><thead><tr><th>Soru</th><th>Çıkan sayfa</th></tr></thead><tbody><tr><td>"TCP üçlü el sıkışmasını açıkla"</td><td>Sıra diyagramı + durum diyagramı + bayrak tablosu</td></tr><tr><td>"Bu repodaki modüller nasıl düzenlenmiş?"</td><td>Klasör ağacı + çağrı grafiği</td></tr><tr><td>"Redis mi Memcached mi?"</td><td>✓/✗ karşılaştırma tablosu + karar</td></tr><tr><td>"Bu paragrafın nesi yanlış?"</td><td>Cümle cümle not + düzeltme önerileri</td></tr><tr><td>"Kubernetes nasıl ortaya çıktı?"</td><td>Önemli anların işaretlendiği zaman çizelgesi</td></tr><tr><td>"ls ile gizli dosyaları nasıl görürüm?"</td><td>Sayfa yok: tek satırlık soruya tek satır cevap</td></tr></tbody></table></div>
+<p>Araç, sayfanın ne zaman değdiğine kendi karar verir: ilişkili kavramlar, çok adımlı akışlar, karşılaştırmalar. İstersen "HTML ile açıkla" diyerek her zaman sayfa isteyebilirsin.</p>
+<h2>Açıklayıcı video</h2>
+<p>Araca "TCP el sıkışmasını adım adım animasyonlu video olarak anlat" dersen, diyagramı anlatımla birlikte adım adım kuran bir <strong>oynatıcı sayfa</strong> üretir. Bölüm şeridi, hız düğmesi ve tarayıcıda videoyu dışa aktaran bir düğme var. MP4 dosyası istersen bilgisayarında FFmpeg kurulu olmalı. Anlatım sesi ayara bağlıdır: README'ye göre macOS'ta sistem sesi kullanılır. Biz Windows'ta sessiz (yalnız altyazılı) denedik. Sesli videoyu paylaşırsan sesin yapay olduğunu belirt.</p>
+<h2>Bileşenler (araç bilgiye göre seçer)</h2>
+<p>flow (mimari, karar dalları) · er (veri modeli) · sequence (taraflar arası mesajlaşma) · tree (klasör, sınıflandırma) · timeline (tarihçe) · chart (grafik) · tablo (çok yönlü karşılaştırma) · callout (uyarı, ipucu) · ask (sayfada karar seçimi).</p>
+<h2>Üç tema</h2>
+<ul>
+<li><strong>blueprint:</strong> mühendislik çizimi havası (diyagramlar için varsayılan)</li>
+<li><strong>shadcn:</strong> temiz kart görünümü</li>
+<li><strong>paper:</strong> uzun okuma için (metin için varsayılan)</li>
+</ul>
+<p>Hepsinin açık ve koyu modu var.</p>
+<h2>Bilmen gereken ince noktalar</h2>
+<ul>
+<li><strong>Always-on modu:</strong> Açarsan her sonuca küçük bir sayfa eklenir; sayfalar kendiliğinden açılmaz. Varsayılan olarak kapalıdır.</li>
+<li><strong>Gizlilik:</strong> Araç günde en fazla bir kez yeni sürüm olup olmadığına bakar; repoya göre senin hakkında bir şey göndermez. Dosyadan kod alıntılarken klasör dışındaki ve anahtar içeren dosyaları reddeder.</li>
+<li><strong>Temizlik:</strong> Sayfalar birikir. "Sayfaları temizle" dersen silmeden önce sorar.</li>
+</ul>
+<div class="ipucu"><strong>Şimdi sen:</strong> En karışık bulduğun konuyu sor (OAuth akışı, Docker ağları, Git rebase). Çıkan sayfanın ekran görüntüsünü al, bizi etiketleyerek paylaş. En açıklayıcı sayfaları kanalda gösterelim.</div>
+<hr>
+<p>Kaynak repo: github.com/QingYunA/answer-me-with-html · MIT lisansı · 4.463 yıldız (alındı 26.10.2026), test edilen sürüm v0.5.10. Rakamlar ve özellikler reponun README'sinden; ölçümler geliştiriciye aittir.</p>
+<footer>Yapay Zekânın Gücü, Üretimin Geleceği! · YouTube · Instagram · TikTok: <b>@yapayburlab</b><br>
+İş birliği: <a href="mailto:yapayburlab@hotmail.com">yapayburlab@hotmail.com</a><br>Bu sayfa Yapay BurLab Fabrikası'nda hazırlandı; içerik yapay zekâ destekli üretildi ve kontrol edildi.</footer>
+</div><script>function kopyala(b){navigator.clipboard.writeText(b.nextElementSibling.innerText).then(()=>{b.textContent='Kopyalandı ✓';setTimeout(()=>b.textContent='Kopyala',1500)})}
+const a=document.querySelector('.ara');if(a)a.oninput=()=>{const q=a.value.toLocaleLowerCase('tr');document.querySelectorAll('a.kart').forEach(k=>k.style.display=k.dataset.k.includes(q)?'':'none')}</script></body></html>
