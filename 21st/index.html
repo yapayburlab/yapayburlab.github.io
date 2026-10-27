@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>21st.dev shader'ını Claude Code ile kendi sitene koy · Yapay BurLab</title>
+<meta name="description" content="21st.dev'de beğendiğin canlı arka planı seç, prompt'unu kopyala, Claude Code'a yapıştır. Adım adım, gerçekten denenmiş komutlarla.">
+<meta property="og:title" content="21st.dev shader'ını Claude Code ile kendi sitene koy">
+<meta property="og:description" content="Canlı arka planı ajansa gitmeden kendi sitene koy. Adım adım rehber.">
+<meta property="og:image" content="https://yapayburlab.github.io/21st/gorseller/01_kanca.webp">
+<meta name="theme-color" content="#05060a">
+<link rel="icon" href="../logo.png">
+<link rel="preload" href="fontlar/montserrat-800.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Montserrat';src:url(fontlar/montserrat-800.woff2) format('woff2');font-weight:800;font-display:swap}
+@font-face{font-family:'Inter';src:url(fontlar/inter-500-a.woff2) format('woff2');font-weight:500;font-display:swap;unicode-range:U+0020-00FF,U+0131,U+2013-2026,U+20BA}
+@font-face{font-family:'Inter';src:url(fontlar/inter-500-b.woff2) format('woff2');font-weight:500;font-display:swap;unicode-range:U+011E-011F,U+0130,U+015E-015F}
+@font-face{font-family:'JetBrains Mono';src:url(fontlar/jetbrains-mono-700.woff2) format('woff2');font-weight:700;font-display:swap}
+:root{--bg:#05060a;--ink:#fff;--soluk:rgba(255,255,255,.66);--a:#11CBF5;--b:#F74A84;--kart:rgba(22,24,34,.92);--kenar:rgba(255,255,255,.10);--grad:linear-gradient(90deg,var(--a),var(--b));--r:22px}
+*{box-sizing:border-box}
+html{background:var(--bg);-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;color:var(--ink);font:500 17px/1.65 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+ background:radial-gradient(60% 520px at 0% 0%,rgba(17,203,245,.16),transparent 70%),radial-gradient(60% 520px at 100% 6%,rgba(247,74,132,.16),transparent 70%),var(--bg);background-repeat:no-repeat}
+.kap{max-width:760px;margin:0 auto;padding:22px 16px 56px}
+a{color:var(--a)}
+h1,h2,h3,.no,.marka b{font-family:Montserrat,Inter,system-ui,sans-serif;font-weight:800;letter-spacing:-.025em}
+header{display:flex;align-items:center;gap:12px;margin-bottom:26px}
+header img{width:46px;height:46px;border-radius:50%;display:block}
+.marka b{font-size:19px;display:block;line-height:1.2}.marka span{color:var(--soluk);font-size:16px}
+.rozet{display:inline-block;padding:6px 14px;border-radius:999px;font:800 13px/1.3 Montserrat,Inter,sans-serif;letter-spacing:1.5px;color:var(--ink);
+ background:linear-gradient(var(--bg),var(--bg)) padding-box,var(--grad) border-box;border:1.5px solid transparent}
+h1{font-size:clamp(30px,7.4vw,46px);line-height:1.1;margin:.45em 0 .4em}
+.g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.vaat{font-size:19px;color:var(--soluk);margin:0 0 22px}.vaat strong{color:var(--ink)}
+figure{margin:16px 0 0}
+figure img{display:block;width:100%;height:auto;border-radius:16px;border:1px solid var(--kenar);background:#0b0d14}
+figcaption{color:var(--soluk);font-size:16px;margin-top:8px}
+.hero img{border-radius:var(--r)}
+figure.dar img{max-width:420px;margin:0 auto}figure.orta img{max-width:520px;margin:0 auto}figure.dar figcaption,figure.orta figcaption{text-align:center}
+figure.mobil img{max-width:300px;margin:0 auto}figure.mobil figcaption{text-align:center}
+figure.terminal{margin-top:10px}figure.terminal img{width:100%;max-width:max-content;border-radius:10px}
+.lazim{display:grid;gap:12px;margin:30px 0 8px}
+@media(min-width:640px){.lazim{grid-template-columns:repeat(3,1fr)}}
+.mini{background:var(--kart);border:1px solid var(--kenar);border-radius:18px;padding:16px}
+.mini b{display:block;font-family:Montserrat,Inter,sans-serif;font-weight:800;margin-bottom:4px}
+.mini p{margin:0;color:var(--soluk);font-size:16px;line-height:1.5}
+.bolum{font-size:clamp(22px,5.4vw,28px);margin:44px 0 14px}
+.adim{background:var(--kart);border:1px solid var(--kenar);border-radius:var(--r);padding:20px 18px 20px;margin:16px 0}
+.adim-bas{display:flex;align-items:center;gap:14px;margin-bottom:8px}
+.no{flex:0 0 auto;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-size:20px;color:#05060a;background:var(--grad)}
+.adim h2{font-size:clamp(19px,4.8vw,23px);line-height:1.2;margin:0}
+.adim p{margin:8px 0}
+code{font-family:'JetBrains Mono',ui-monospace,Consolas,monospace;font-size:.86em;background:rgba(255,255,255,.08);padding:1px 6px;border-radius:6px}
+.kod{margin:14px 0 4px;background:#020306;border:1px solid var(--kenar);border-radius:16px;overflow:hidden}
+.kod-bas{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:6px 6px 6px 14px;border-bottom:1px solid var(--kenar)}
+.kod-bas span{font:800 13px Montserrat,Inter,sans-serif;letter-spacing:1px;color:var(--soluk)}
+.kopyala{min-height:44px;min-width:104px;padding:0 16px;border:0;border-radius:12px;background:var(--grad);color:#05060a;font:800 15px Montserrat,Inter,sans-serif;cursor:pointer}
+.kopyala:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.kod pre{margin:0;padding:14px 16px 16px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.kod pre code{background:none;padding:0;font-size:15px;line-height:1.6;white-space:pre;color:#E9F6FF}
+.kod pre.sar code{white-space:pre-wrap;word-break:break-word}
+.kod pre.yazi code{font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px}
+.not{margin:14px 0 0;padding:14px 16px;border-radius:16px;background:rgba(247,74,132,.08);border:1px solid rgba(247,74,132,.28);font-size:16px}
+.ikili{display:grid;gap:12px}
+.liste{margin:0;padding-left:20px}.liste li{margin:8px 0}
+.gorev{position:relative;background:var(--kart);border:1px solid var(--kenar);border-radius:18px;padding:16px 18px;margin:12px 0}
+.gorev .etiket{display:inline-block;font:800 13px Montserrat,Inter,sans-serif;letter-spacing:1.5px;padding:4px 10px;border-radius:999px;background:var(--grad);color:#05060a;margin-bottom:6px}
+.gorev p{margin:4px 0 0}
+.tesekkur{background:var(--kart);border:1px solid var(--kenar);border-radius:var(--r);padding:18px}
+.tesekkur ul{margin:8px 0 0;padding-left:20px}.tesekkur li{margin:6px 0}
+.tesekkur small{color:var(--soluk);font-size:16px}
+.kapanis{margin-top:44px;padding:24px 20px;border-radius:var(--r);text-align:center;
+ background:linear-gradient(var(--kart),var(--kart)) padding-box,var(--grad) border-box;border:1.5px solid transparent}
+.kapanis h2{font-size:clamp(23px,6vw,30px);margin:0 0 8px}
+.kapanis p{margin:0 auto 16px;max-width:520px;color:var(--soluk)}
+.takip{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.takip a{min-height:44px;display:inline-flex;align-items:center;padding:0 18px;border-radius:12px;border:1px solid var(--kenar);background:rgba(255,255,255,.04);color:var(--ink);text-decoration:none;font-weight:600}
+.takip a:hover{border-color:var(--a)}
+.demo{margin:16px 0 4px;text-align:center}
+.demo a{min-height:48px;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:0 24px;border-radius:12px;background:var(--grad);color:#05060a;text-decoration:none;font:800 17px Montserrat,Inter,sans-serif}
+.demo a:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.demo small{display:block;margin-top:6px;color:var(--soluk);font-size:16px}
+.adim h3{font-size:clamp(18px,4.6vw,21px);line-height:1.25;margin:26px 0 6px;padding-top:18px;border-top:1px solid var(--kenar)}
+.handle{font-family:Montserrat,Inter,sans-serif;font-weight:800;font-size:22px;margin:4px 0 14px}
+footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--kenar);color:var(--soluk);font-size:16px;line-height:1.6}
+footer a{color:var(--soluk)}
+</style>
+</head>
+<body>
+<div class="kap">
+
+<header>
+ <a href="../"><img src="../logo.png" alt="Yapay BurLab" width="46" height="46"></a>
+ <div class="marka"><b>Yapay BurLab</b><span>@yapayburlab · Rehber merkezi</span></div>
+</header>
+
+<span class="rozet">YORUM KELİMESİ: 21ST</span>
+<h1>Canlı arka planı <span class="g">kendi sitene</span> koy</h1>
+<p class="vaat">Videonun sonundaki arka plan <strong>bizim test sitemizde</strong> çalışıyor. Aynısını ajansa gitmeden sen de yaparsın: 21st.dev'de beğendiğin shader'ı seç, prompt'unu kopyala, Claude Code'a yapıştır.</p>
+<figure class="hero"><img src="gorseller/01_kanca.webp" alt="Videonun açılış karesi: fareye tepki veren pembe ışık" width="960" height="711" fetchpriority="high"></figure>
+
+<div class="lazim">
+ <div class="mini"><b>21st.dev hesabı</b><p>Ücretsiz. Gezinmek hesapsız açık; kopyalamak için hesap gerekir. Ücretsiz hesap günde 2 bileşen kopyalar.</p></div>
+ <div class="mini"><b>Node.js</b><p>Resmi siteden kur: <a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a></p></div>
+ <div class="mini"><b>Claude Code</b><p>Resmi kurulum: <a href="https://code.claude.com/docs/en/setup" target="_blank" rel="noopener">kurulum sayfası</a></p></div>
+</div>
+
+<h2 class="bolum">Adım adım</h2>
+
+<article class="adim">
+ <div class="adim-bas"><span class="no">1</span><h2>21st.dev'de shader bul</h2></div>
+ <p>21st.dev'de Library menüsünden Components'e gir, <strong>Shaders</strong> filtresini seç. Yüzlerce shader var. Kartın üstünde imleci gezdir, canlı önizlemeyi gör.</p>
+ <figure><img src="gorseller/02_galeri.webp" alt="21st.dev galerisi: Components sekmesi, Shaders filtresi seçili, shader kartları" width="960" height="648" loading="lazy"><figcaption>Components sekmesi, Shaders filtresi. Her kart canlı önizleme.</figcaption></figure>
+</article>
+
+<article class="adim">
+ <div class="adim-bas"><span class="no">2</span><h2>Ücretsiz hesapla “Copy prompt”</h2></div>
+ <p>Beğendiğin shader'ın sayfasına gir, <strong>Copy prompt</strong> butonuna bas. Sağ altta “1 of 2 free copies used today” çıkar: bugünkü 2 hakkından biri kullanıldı.</p>
+ <div class="ikili">
+  <figure class="orta"><img src="gorseller/03_copy_prompt.webp" alt="Copy prompt butonu" width="780" height="380" loading="lazy"><figcaption>Bileşen sayfasındaki Copy prompt butonu.</figcaption></figure>
+  <figure class="orta"><img src="gorseller/04_bildirim.webp" alt="Kopyalandı bildirimi: 1 of 2 free copies used today" width="780" height="200" loading="lazy"><figcaption>Kopyaladıktan sonra sağ altta çıkan bildirim.</figcaption></figure>
+ </div>
+ <p class="not">Prompt metni bu sayfada yok: o metin bileşen yazarının emeği. 21st.dev'de Copy prompt butonuyla al.</p>
+</article>
+
+<article class="adim">
+ <div class="adim-bas"><span class="no">3</span><h2>Boş bir Vite + React + TypeScript projesi aç</h2></div>
+ <p>Terminalde (Windows'ta PowerShell) sırayla çalıştır. <code>benim-sitem</code> yerine istediğin adı yazabilirsin.</p>
+ <div class="kod"><div class="kod-bas"><span>TERMİNAL</span><button class="kopyala" type="button">Kopyala</button></div><pre><code>npm create vite@6.5.0 benim-sitem -- --template react-ts
+cd benim-sitem
+npm install</code></pre></div>
+ <p class="not">Biz bu sürümle denedik; daha yeni sürüm ek sorular sorabilir.</p>
+</article>
+
+<article class="adim">
+ <div class="adim-bas"><span class="no">4</span><h2>Prompt'u Claude Code'a yapıştır</h2></div>
+ <p>Proje klasöründe Claude Code'u bu komutla aç:</p>
+ <div class="kod"><div class="kod-bas"><span>TERMİNAL</span><button class="kopyala" type="button">Kopyala</button></div><pre class="sar"><code>claude --permission-mode acceptEdits</code></pre></div>
+ <p class="not">Bu kip dosya düzenlemelerini sormadan yapar; paket kurulumu, derleme ve sunucu gibi komutlarda yine izin sorar. Bizde 9 kez sordu.</p>
+ <p>Önce şu cümleyi yaz, ardından 21st.dev'den kopyaladığın prompt'u yapıştır:</p>
+ <div class="kod"><div class="kod-bas"><span>CLAUDE CODE</span><button class="kopyala" type="button">Kopyala</button></div><pre class="sar"><code>Bu Vite projesine ekle ve ana sayfada tam ekran göster.</code></pre></div>
+ <p>Claude Code izin sorduğunda onaylıyorsun, kurulumu kendisi yapıyor (bizde ~6 dk sürdü). Bizim denememizde eksik paketleri kurdu; Tailwind v4 ayarını, <code>@/</code> yol kısayolunu, <code>components/ui</code> klasörünü ve tam ekran sayfayı hazırladı; derleyip sunucuyu açtı.</p>
+ <figure class="terminal"><img style="width:45.9%" src="gorseller/07a_derleme.webp" alt="Claude Code terminalinde: Derleme temiz." width="268" height="44" loading="lazy"></figure>
+ <figure class="terminal"><img src="gorseller/07b_sunucu.webp" alt="Claude Code terminalinde: Sunucu açık: http://localhost:5180/" width="584" height="42" loading="lazy"><figcaption>Bizim denememizde Claude Code'un son mesajları.</figcaption></figure>
+</article>
+
+<article class="adim">
+ <div class="adim-bas"><span class="no">5</span><h2>Tarayıcıda canlı</h2></div>
+ <p>Claude Code sunucuyu kendisi açıp localhost adresini yazar. Sonradan kendin açmak istersen proje klasöründe:</p>
+ <div class="kod"><div class="kod-bas"><span>TERMİNAL</span><button class="kopyala" type="button">Kopyala</button></div><pre><code>npm run dev</code></pre></div>
+ <p>Terminalde çıkan localhost adresini tarayıcıda aç. İmleci gezdir: arka plan tepki veriyor.</p>
+ <div class="ikili">
+  <figure><img src="gorseller/05_canli.webp" alt="Test sitemizde çalışan Neural Noise arka planı" width="960" height="600" loading="lazy"><figcaption>Test sitemizde, ilk açılış.</figcaption></figure>
+  <figure><img src="gorseller/06_bizim_site.webp" alt="Videonun ödül sahnesi: Bizim sitemizde yazısı, açılış sayfamız dizüstü ve telefonda" width="960" height="950" loading="lazy"><figcaption>Videonun ödül sahnesi: bizim açılış sayfamız dizüstü ve telefonda.</figcaption></figure>
+ </div>
+</article>
+
+<article class="adim">
+ <div class="adim-bas"><span class="no">6</span><h2>Sonuç: bitmiş site</h2></div>
+ <p>Aynı shader'ı arka plan yapan bir açılış sayfasını da Claude Code'a yaptırdık. Aynı projede tek bir prompt verdik; Claude Code sayfayı ~80 sn'de yazdı. Derlemeyi biz ayrıca çalıştırdık: temiz.</p>
+ <div class="demo"><a href="https://yapayburlab.github.io/21st-demo/" target="_blank" rel="noopener">Canlı demoyu aç</a><small>Yeni sekmede açılır. İmleci gezdir, rengi değiştir.</small></div>
+ <figure><img src="gorseller/08a_site_masaustu.webp" alt="Bitmiş açılış sayfası, masaüstü: canlı arka plan, Yapay BurLab başlığı, alt başlık ve Keşfet butonu" width="960" height="607" loading="lazy"><figcaption>Masaüstünde ilk ekran.</figcaption></figure>
+ <figure class="mobil"><img src="gorseller/08b_site_mobil.webp" alt="Bitmiş açılış sayfası, telefonda ilk ekran: başlık, alt başlık, Keşfet butonu ve renk seçici" width="560" height="1212" loading="lazy"><figcaption>Aynı sayfa telefonda, ilk ekran (390 px).</figcaption></figure>
+ <p>Kendi markana uyarlaman için prompt'un kısa hali. Köşeli parantezleri kendi bilgilerinle doldur:</p>
+ <div class="kod"><div class="kod-bas"><span>CLAUDE CODE</span><button class="kopyala" type="button">Kopyala</button></div><pre class="sar yazi"><code>Bu projede tek sayfalık bir açılış sayfası yap (React + Tailwind, mevcut yapı korunsun).
+- Hero: NeuralNoise bileşeni yalnız hero bölümünün tam ekran arka planı olsun, sayfanın tamamını kaplamasın.
+- Hero ortasında büyük başlık "[Markanın adı]", alt başlık "[Tek cümlelik sloganın]" ve "[Buton yazısı]" butonu (tıklayınca aşağıya yumuşak kaysın).
+- Hero'nun altında 3 kartlık ızgara (her kartta kısa başlık + bir cümle), kısa bir metin bölümü ve alt bilgi (marka adı + yıl).
+- Koyu, modern tasarım; vurgu renkleri [renk 1] ve [renk 2]; büyük, net yazı (dış font/CDN kullanma). Mobilde (390 px) düzgün görünsün.
+- Benim vermediğim marka, kişi ya da şirket adı yazma. Türkçe karakterleri doğru kullan.
+- Ortadaki eski "Neural Noise" demo yazısını kaldır.
+- Bitince npm run build ile derlemenin temiz olduğunu doğrula.</code></pre></div>
+ <p class="not">Bizim denememizde: başlık “Yapay BurLab”, alt başlık “Yapay zekâyla üretim, gerçek ekranla anlatım”, buton “Keşfet”, renkler #11CBF5 ve #F74A84. Claude Code sayfayı tarayıcıda görmedi; mobil görünümü biz kontrol ettik. Sen de <code>npm run dev</code> ile açıp telefon genişliğinde bak.</p>
+ <h3>Rengini sen seç</h3>
+ <p>Hero'nun altındaki 3 renkli seçiciyi (Turkuaz, Pembe, Mor) sonradan biz ekledik. Seçtiğin renk NeuralNoise'un <code>color</code> prop'una gider; arka plan yeni renge yumuşakça geçer. Canlı demoda kendin deneyebilirsin.</p>
+ <figure><img src="gorseller/09_renk_secici.webp" alt="Aynı hero iki renkte: solda pembe, sağda mor arka plan; altta üç renkli seçici" width="960" height="307" loading="lazy"><figcaption>Solda Pembe, sağda Mor seçili.</figcaption></figure>
+</article>
+
+<h2 class="bolum">Sık takılınanlar</h2>
+<ul class="liste">
+ <li><strong><code>npm run dev</code> hata veriyor:</strong> Paket kurulumu yarım kalmış olabilir. Proje klasöründe şu iki komutu çalıştır:
+ <div class="kod"><div class="kod-bas"><span>TERMİNAL</span><button class="kopyala" type="button">Kopyala</button></div><pre class="sar"><code>npm install -D tailwindcss@^4 @tailwindcss/vite@^4 @types/node
+npm install clsx tailwind-merge</code></pre></div>
+ </li>
+ <li><strong>Kopyalama hakkın bitti:</strong> Ücretsiz hesap günde 2 kopya. Seçimini önce canlı önizlemede yap, sonra kopyala.</li>
+ <li><strong><code>@/components/ui</code> yolu:</strong> 21st.dev bileşenleri bu yolu bekler. Claude Code kurmadıysa “@/ yol kısayolunu ve components/ui klasörünü kur” diye iste.</li>
+</ul>
+
+<h2 class="bolum">Şimdi sen</h2>
+<div class="gorev"><span class="etiket">ŞİMDİ SEN · 1</span><p>Galeriden kendi sitene uyan bir shader seç ve canlı önizlemede imleçle dene.</p></div>
+<div class="gorev"><span class="etiket">ŞİMDİ SEN · 2</span><p>Claude Code'a “rengi markamın rengine çevir, hızını yavaşlat” yaz. Kendi renginle nasıl göründüğüne bak.</p></div>
+<div class="gorev"><span class="etiket">ŞİMDİ SEN · 3</span><p>6. adımdaki prompt'ta köşeli parantezlere kendi markanın adını, sloganını ve renklerini yaz, Claude Code'a ver. Sitenin ilk sayfası hazır.</p></div>
+
+<h2 class="bolum">Teşekkürler</h2>
+<div class="tesekkur">
+ <small>Videodaki shader'lar 21st.dev'de, emeği yazarlarının:</small>
+ <ul>
+  <li>Glass Fold, Stripe like gradient-shader ve Black Hole: @meerbahadin10</li>
+  <li>Neural Noise, Wave ve Shader Lines: @designali-in</li>
+  <li>Water Caustic: @chamaac</li>
+  <li>Phosphor 30: @xordev</li>
+  <li>Shader Background: @minhxthanh</li>
+ </ul>
+</div>
+
+<section class="kapanis">
+ <h2>Sıradaki içeriği <span class="g">sen seç</span></h2>
+ <p>Hangi ücretsiz siteyi ya da bileşeni denememi istersin? Videonun altına yaz; en çok istenen sıradaki videoda.</p>
+ <div class="handle">@yapayburlab</div>
+ <div class="takip">
+  <a href="https://www.youtube.com/@yapayburlab" target="_blank" rel="noopener">YouTube</a>
+  <a href="https://www.instagram.com/yapayburlab/" target="_blank" rel="noopener">Instagram</a>
+  <a href="https://www.tiktok.com/@yapayburlab" target="_blank" rel="noopener">TikTok</a>
+ </div>
+</section>
+
+<footer>Yapay Zekânın Gücü, Üretimin Geleceği! · YouTube · Instagram · TikTok: <b>@yapayburlab</b><br>
+İş birliği: <a href="mailto:yapayburlab@hotmail.com">yapayburlab@hotmail.com</a><br>
+Bu sayfa Yapay BurLab Fabrikası'nda hazırlandı; içerik yapay zekâ destekli üretildi ve kontrol edildi. <a href="../">Tüm rehberler</a></footer>
+
+</div>
+<script>
+document.querySelectorAll('.kopyala').forEach(function(b){
+ b.addEventListener('click',function(){
+  var t=b.closest('.kod').querySelector('pre').innerText.replace(/\n+$/,'');
+  var bitti=function(){b.textContent='Kopyalandı ✓';setTimeout(function(){b.textContent='Kopyala'},1600)};
+  if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(bitti,yedek)}else{yedek()}
+  function yedek(){var a=document.createElement('textarea');a.value=t;a.setAttribute('readonly','');a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();try{document.execCommand('copy');bitti()}catch(e){}document.body.removeChild(a)}
+ });
+});
+</script>
+</body>
+</html>
