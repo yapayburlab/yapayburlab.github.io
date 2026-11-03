@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>İzometrik İstanbul: Kendi Mahalleni Yapay Zekâya Çizdir · Yapay BurLab</title>
+<meta name="description" content="Kuzguncuk'ta denediğimiz yöntem adım adım: OSM Buildings'te açıyı kilitle, Nano Banana 2.1 ile izometrik çizime çevir, Omni 1.1 Flash ile canlandır. Gerçek istemler.">
+<meta property="og:title" content="İzometrik İstanbul: Kendi Mahalleni Yapay Zekâya Çizdir">
+<meta property="og:description" content="Harita görüntüsü, izometrik çizim, canlanan sokak. Kuzguncuk denememizin gerçek istemleriyle.">
+<meta property="og:image" content="https://yapayburlab.github.io/harita/gorseller/01_kanca.webp">
+<meta name="theme-color" content="#0B1320">
+<link rel="icon" href="../logo.png">
+<link rel="preload" href="fontlar/plus-jakarta-sans-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Plus Jakarta Sans';src:url(fontlar/plus-jakarta-sans-500-latin.woff2) format('woff2');font-weight:500;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Plus Jakarta Sans';src:url(fontlar/plus-jakarta-sans-500-latin-ext.woff2) format('woff2');font-weight:500;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Plus Jakarta Sans';src:url(fontlar/plus-jakarta-sans-800-latin.woff2) format('woff2');font-weight:800;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Plus Jakarta Sans';src:url(fontlar/plus-jakarta-sans-800-latin-ext.woff2) format('woff2');font-weight:800;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'JetBrains Mono';src:url(fontlar/jetbrains-mono-700-latin.woff2) format('woff2');font-weight:700;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'JetBrains Mono';src:url(fontlar/jetbrains-mono-700-latin-ext.woff2) format('woff2');font-weight:700;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+:root{--bg:#0B1320;--kart:rgba(21,34,56,.88);--kenar:rgba(46,196,182,.28);--ink:#F8F9FA;--soluk:#A9B6C6;--a:#2EC4B6;--altin:#FFB703;--kiremit:#E85D3F;--r:20px}
+*{box-sizing:border-box}
+html{background:var(--bg);-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;color:var(--ink);font:500 17px/1.65 'Plus Jakarta Sans',system-ui,-apple-system,"Segoe UI",sans-serif;
+ background:radial-gradient(70% 520px at 0% 0%,rgba(46,196,182,.14),transparent 70%),radial-gradient(60% 520px at 100% 4%,rgba(232,93,63,.12),transparent 70%),var(--bg);background-repeat:no-repeat}
+.kap{max-width:760px;margin:0 auto;padding:22px 16px 56px}
+a{color:var(--a)}
+h1,h2,h3,.no,.marka b{font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-weight:800;letter-spacing:-.02em}
+header{display:flex;align-items:center;gap:12px;margin-bottom:26px}
+header img{width:46px;height:46px;border-radius:50%;display:block}
+.marka b{font-size:19px;display:block;line-height:1.2}.marka span{color:var(--soluk);font-size:16px}
+.rozet{display:inline-block;padding:6px 14px;border-radius:999px;font:700 13px/1.3 'JetBrains Mono',ui-monospace,monospace;letter-spacing:1.5px;color:var(--altin);border:1.5px solid var(--altin)}
+h1{font-size:clamp(30px,7.4vw,46px);line-height:1.1;margin:.45em 0 .4em}
+.vurgu{color:var(--altin)}.kir{color:var(--kiremit)}.tur{color:var(--a)}
+.vaat{font-size:19px;color:var(--soluk);margin:0 0 22px}.vaat strong{color:var(--ink)}
+figure{margin:16px 0 0}
+figure img,figure video{display:block;width:100%;height:auto;border-radius:16px;border:1px solid var(--kenar);background:#08101b}
+figcaption{color:var(--soluk);font-size:16px;margin-top:8px}
+figure.dar img,figure.dar video{max-width:400px;margin:0 auto}figure.dar figcaption{text-align:center}
+figure.panel img{max-width:320px;margin:0 auto}figure.panel figcaption{text-align:center}
+.bolum{font-size:clamp(22px,5.4vw,28px);margin:44px 0 14px}
+.olgu{display:grid;gap:12px;margin:16px 0}
+@media(min-width:640px){.olgu{grid-template-columns:repeat(3,1fr)}}
+.mini{background:var(--kart);border:1px solid var(--kenar);border-radius:18px;padding:16px}
+.mini b{display:block;font:700 26px/1.2 'JetBrains Mono',ui-monospace,monospace;color:var(--altin);margin-bottom:4px}
+.mini p{margin:0;color:var(--soluk);font-size:16px;line-height:1.5}
+.akis{background:var(--kart);border:1px solid var(--kenar);border-radius:var(--r);padding:16px 18px;margin:12px 0}
+.akis ol{margin:0;padding-left:22px}.akis li{margin:6px 0}
+.kaynak{font-size:16px;color:var(--soluk)}
+.adim{background:var(--kart);border:1px solid var(--kenar);border-radius:var(--r);padding:20px 18px;margin:16px 0}
+.adim-bas{display:flex;align-items:center;gap:14px;margin-bottom:8px}
+.no{flex:0 0 auto;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-size:20px;color:#0B1320;background:var(--a)}
+.adim h2{font-size:clamp(19px,4.8vw,23px);line-height:1.2;margin:0}
+.adim p{margin:8px 0}
+.ayar{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.ayar span{font:700 14px/1 'JetBrains Mono',ui-monospace,monospace;padding:8px 10px;border-radius:10px;background:rgba(46,196,182,.12);border:1px solid var(--kenar);color:var(--ink)}
+code{font-family:'JetBrains Mono',ui-monospace,Consolas,monospace;font-weight:700;font-size:.84em;background:rgba(255,255,255,.08);padding:1px 6px;border-radius:6px}
+.kod{margin:14px 0 4px;background:#060b13;border:1px solid var(--kenar);border-radius:16px;overflow:hidden}
+.kod-bas{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:6px 6px 6px 14px;border-bottom:1px solid var(--kenar)}
+.kod-bas span{font:700 13px 'JetBrains Mono',ui-monospace,monospace;letter-spacing:1px;color:var(--soluk)}
+.kopyala{min-height:44px;min-width:104px;padding:0 16px;border:0;border-radius:12px;background:var(--altin);color:#0B1320;font:800 15px 'Plus Jakarta Sans',sans-serif;cursor:pointer}
+.kopyala:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.kod pre{margin:0;padding:14px 16px 16px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.kod pre code{background:none;padding:0;font-size:15px;line-height:1.6;white-space:pre;color:#E6FBF8}
+.kod pre.sar code{white-space:pre-wrap;word-break:break-word;font-weight:500;font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-size:16px}
+.not{margin:14px 0 0;padding:14px 16px;border-radius:16px;background:rgba(255,183,3,.07);border:1px solid rgba(255,183,3,.30);font-size:16px}
+.liste{margin:0;padding-left:20px}.liste li{margin:8px 0}
+.gorev{background:var(--kart);border:1px solid var(--kenar);border-radius:18px;padding:16px 18px;margin:12px 0}
+.gorev .etiket{display:inline-block;font:700 13px 'JetBrains Mono',ui-monospace,monospace;letter-spacing:1.5px;padding:4px 10px;border-radius:999px;background:var(--a);color:#0B1320;margin-bottom:6px}
+.gorev p{margin:4px 0 0}
+.tesekkur{background:var(--kart);border:1px solid var(--kenar);border-radius:var(--r);padding:18px}
+.tesekkur ul{margin:8px 0 0;padding-left:20px}.tesekkur li{margin:6px 0}
+.tesekkur small{color:var(--soluk);font-size:16px}
+.dugme{margin:16px 0 4px;text-align:center}
+.dugme a{min-height:48px;display:inline-flex;align-items:center;justify-content:center;padding:0 24px;border-radius:12px;background:var(--a);color:#0B1320;text-decoration:none;font:800 17px 'Plus Jakarta Sans',sans-serif}
+.dugme a:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.dugme small{display:block;margin-top:6px;color:var(--soluk);font-size:16px}
+.kapanis{margin-top:44px;padding:24px 20px;border-radius:var(--r);text-align:center;background:var(--kart);border:1.5px solid var(--altin)}
+.kapanis h2{font-size:clamp(23px,6vw,30px);margin:0 0 8px}
+.kapanis p{margin:0 auto 16px;max-width:520px;color:var(--soluk)}
+.takip{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.takip a{min-height:44px;display:inline-flex;align-items:center;padding:0 18px;border-radius:12px;border:1px solid var(--kenar);background:rgba(255,255,255,.04);color:var(--ink);text-decoration:none;font-weight:800}
+.takip a:hover{border-color:var(--a)}
+.handle{font-weight:800;font-size:22px;margin:4px 0 14px;color:var(--altin)}
+footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--kenar);color:var(--soluk);font-size:16px;line-height:1.6}
+footer a{color:var(--soluk)}
+</style>
+</head>
+<body>
+<div class="kap">
+
+<header>
+ <a href="../"><img src="../logo.png" alt="Yapay BurLab" width="46" height="46"></a>
+ <div class="marka"><b>Yapay BurLab</b><span>@yapayburlab · Rehber merkezi</span></div>
+</header>
+
+<span class="rozet">YORUM KELİMESİ: HARİTA</span>
+<h1>Kendi mahalleni <span class="vurgu">yapay zekâya</span> çizdir</h1>
+<p class="vaat">Videoda Kuzguncuk'ta denediğimiz yöntem burada <strong>adım adım</strong>, gerçekten kullandığımız iki istemle: harita görüntüsü, izometrik çizim, canlanan sokak.</p>
+<figure><img src="gorseller/01_kanca.webp" alt="Videodan kare: üst yarıda yapay zekânın izometrik çizimi, alt yarıda aynı bölgenin 3B harita görünümü" width="720" height="900" fetchpriority="high"><figcaption>Videodan: aynı Kuzguncuk görüntüsü, üstte çizime dönmüş hâli.</figcaption></figure>
+
+<h2 class="bolum">Isometric Istanbul nedir?</h2>
+<p>Yahya Bedirhan Pak'ın projesi. Büyükşehir'in herkese açık 3B şehir uygulamasından (İBB 3B İstanbul) sabit açıyla görüntü alınıyor; bu görüntüler yapay zekâyla izometrik çizime dönüşüyor.</p>
+<div class="olgu">
+ <div class="mini"><b>315° · 54,7°</b><p>Kameranın kilitlendiği yön ve yaklaşık eğim.</p></div>
+ <div class="mini"><b>24.601</b><p>Denizlerle birlikte kare sayısı (kara 22.042 + deniz 2.559).</p></div>
+ <div class="mini"><b>1.176</b><p>Öğretmen modelin çizdiği örnek kare (153 simge yapı dahil).</p></div>
+</div>
+<div class="akis">
+ <b>Öğretmen–öğrenci tekniği</b>
+ <ol>
+  <li><span class="kir">Öğretmen</span> model GPT Image 2.5 yalnızca 1.176 örnek kare çiziyor.</li>
+  <li>Bu çizimlerle açık model <span class="tur">Qwen-Image-2.1-Turbo</span> eğitiliyor (Qwen Araştırma Lisansı).</li>
+  <li>Kalan şehri bu <span class="tur">öğrenci</span> model çiziyor.</li>
+ </ol>
+</div>
+<div class="dugme"><a href="https://isometricistanbul.com" target="_blank" rel="noopener">isometricistanbul.com'u aç</a><small>Yeni sekmede açılır. Sokak sokak gez.</small></div>
+<p class="kaynak">Kaynaklar: <a href="https://isometricistanbul.com/tr/docs" target="_blank" rel="noopener">projenin teknik sayfası</a> · <a href="https://gazeteoksijen.com/turkiye/istanbulu-hic-boyle-gormediniz-sehrin-tamami-dijital-bir-makete-donustu-294444" target="_blank" rel="noopener">Gazete Oksijen</a> · <a href="https://www.haberler.com/haber/yahya-bedirhan-pak-kimdir-istanbulun-izometrik-20380591-haberi/" target="_blank" rel="noopener">Haberler.com</a></p>
+
+<h2 class="bolum">Biz Kuzguncuk'ta nasıl denedik?</h2>
+
+<article class="adim">
+ <div class="adim-bas"><span class="no">1</span><h2>Bölgeyi OSM Buildings'te aç, açıyı kilitle</h2></div>
+ <p>OSM Buildings, OpenStreetMap verisindeki binaları tarayıcıda 3B gösterir. Açı adres çubuğundan ayarlanıyor. Bizim açtığımız adres:</p>
+ <div class="kod"><div class="kod-bas"><span>ADRES</span><button class="kopyala" type="button">Kopyala</button></div><pre><code>https://osmbuildings.org/?lat=41.03420&amp;lon=29.03080&amp;zoom=17.8&amp;tilt=45&amp;rotation=315</code></pre></div>
+ <div class="ayar"><span>rotation=315 · yön</span><span>tilt=45 · eğim</span><span>zoom=17.8 · yakınlık</span></div>
+ <p class="not">Isometric Istanbul 54,7° eğim kullanıyor. Biz OSM Buildings'te <code>tilt=45</code> ile aldık; 54,7°'yi çizim isteminde istedik. Daha dik ve tamamen tepeden açıları da denedik; çizime en uygun girdi bu oldu.</p>
+ <p>Sayfa açılınca ekran görüntüsü al; sitenin üst menüsünü ve alt şeridini kırp.</p>
+ <figure class="dar"><img src="gorseller/02_osm_kuzguncuk.webp" alt="Kuzguncuk, OSM Buildings 3B görünümü: üstte deniz, altta gri bina blokları ve yeşil alanlar" width="720" height="900" loading="lazy"><figcaption>Kuzguncuk, 315° yönden. Bu görselde harita etiketleri temizlendi.</figcaption></figure>
+</article>
+
+<article class="adim">
+ <div class="adim-bas"><span class="no">2</span><h2>Google Flow'da Nano Banana 2.1 ile çizime çevir</h2></div>
+ <p>Flow'da yeni proje aç, ekran görüntüsünü yükle. Ayarlar:</p>
+ <div class="ayar"><span>Resim</span><span>9:16</span><span>Nano Banana 2.1</span><span>x2</span></div>
+ <p>İstemi yapıştır, gönder:</p>
+ <div class="kod"><div class="kod-bas"><span>ÇİZİM İSTEMİ</span><button class="kopyala" type="button">Kopyala</button></div><pre class="sar"><code>Transform this 3D city map screenshot into a charming, high-detail isometric architectural illustration and clean pixel-art hybrid, inspired by classic 1990s city-building simulation games. Strictly preserve the exact street geometry, building footprints, roof heights, and coastal/park layout from the reference image. Orthographic isometric projection at a 54.7-degree tilt and 315-degree azimuth. Warm Mediterranean afternoon sunlight with soft crisp shadows, detailed terracotta tiled roofs, warm stone and pastel facades, lush volumetric green trees along the streets, and stylized turquoise water. Completely clean illustration: NO text, NO street labels, NO brand logos, NO billboards, NO human faces. Crisp edges, masterpiece digital miniature art.</code></pre></div>
+ <p>İki çıktıdan yazı, logo ve yüz içermeyeni seçtik. Çizim sokak düzenini yaklaşık korur; her binayı aynen kopyalamaz.</p>
+ <p class="not">Bizim planımızda bu iki görsel bakiyeden kredi düşürmedi. Senin planında farklı olabilir; göndermeden önce ekrandaki tutara bak.</p>
+ <figure class="dar"><img src="gorseller/03_ai_cizim.webp" alt="Nano Banana 2.1 çıktısı: kiremit çatılı evler, yeşil ağaçlar ve turkuaz denizle izometrik Kuzguncuk çizimi" width="560" height="1003" loading="lazy"><figcaption>Seçtiğimiz çıktı.</figcaption></figure>
+</article>
+
+<article class="adim">
+ <div class="adim-bas"><span class="no">3</span><h2>Omni 1.1 Flash ile 8 saniye canlandır</h2></div>
+ <p>Seçtiğin çizimi başlangıç karesi yap. Ayarlar:</p>
+ <div class="ayar"><span>Video</span><span>Kareler</span><span>9:16</span><span>Omni 1.1 Flash</span><span>720p</span><span>8 sn</span><span>x1</span></div>
+ <figure class="panel"><img src="gorseller/06_flow_video_ayar.webp" alt="Flow video ayar paneli: Video, Kareler, 9:16, Omni 1.1 Flash, 720p, 8 sn, x1; Üretme işlemi için 12 kredi kullanılır" width="592" height="654" loading="lazy"><figcaption>Bizim ekranımız: 12 kredi.</figcaption></figure>
+ <div class="kod"><div class="kod-bas"><span>CANLANDIRMA İSTEMİ</span><button class="kopyala" type="button">Kopyala</button></div><pre class="sar"><code>Locked-off, 100% static orthographic isometric camera view. A miniature isometric city illustration coming to life: tiny stylized isometric cars in red, white, and yellow driving smoothly along the exact road lanes at a steady pace. Lush green tree canopies gently swaying in a soft breeze. Subtle shimmering light reflections on the turquoise water surface. All buildings, roofs, and roads remain completely rigid, sharp, and locked in place with zero camera movement or warping. Warm afternoon ambient lighting.</code></pre></div>
+ <p>Bakiyemizden 12 kredi düştü. Videoyu 1080p indirdik.</p>
+ <figure class="dar"><video src="gorseller/04_canli.mp4" poster="gorseller/04_canli_kapak.webp" width="360" height="640" muted loop playsinline preload="none" controls aria-label="Omni 1.1 Flash çıktısı: çizimdeki yollarda küçük arabalar ilerliyor, ağaçlar hafifçe sallanıyor"></video><figcaption>Omni 1.1 Flash çıktısı, sessiz ve küçültülmüş.</figcaption></figure>
+</article>
+
+<article class="adim">
+ <div class="adim-bas"><span class="no">4</span><h2>İpuçları</h2></div>
+ <ul class="liste">
+  <li><strong>Bölgeyi doğru seç:</strong> Tabela, işletme adı ve insan yüzü görünmeyen bir yer seç.</li>
+  <li><strong>Etiketleri temizle:</strong> Haritadaki sokak ve işletme adlarını paylaşmadan önce boya ya da kırp.</li>
+  <li><strong>Kamera kaymasın:</strong> İstemin başına “Locked-off, static” yaz, binaların sabit kalmasını açıkça iste.</li>
+  <li><strong>Atfı unutma:</strong> Paylaşırken “Harita verisi © OpenStreetMap katkıcıları” yaz.</li>
+ </ul>
+</article>
+
+<h2 class="bolum">Şimdi sen</h2>
+<div class="gorev"><span class="etiket">ŞİMDİ SEN · 1</span><p>openstreetmap.org'da kendi mahalleni bul. Adres çubuğundaki enlem ve boylamı 1. adımdaki adreste <code>lat</code> ve <code>lon</code> yerine yaz.</p></div>
+<div class="gorev"><span class="etiket">ŞİMDİ SEN · 2</span><p>Çizim istemindeki ışık cümlesini kendi fikrinle değiştir (ör. kış sabahı, akşam ışıkları). İki sonucu yan yana koy.</p></div>
+<div class="gorev"><span class="etiket">ŞİMDİ SEN · 3</span><p>Canlandırma isteminde arabalar yerine semtine uyan bir hareket yaz (ör. sahilde vapur, rüzgârda sallanan ağaçlar).</p></div>
+
+<h2 class="bolum">Teşekkürler</h2>
+<div class="tesekkur">
+ <ul>
+  <li>Isometric Istanbul: Yahya Bedirhan Pak (<a href="https://isometricistanbul.com" target="_blank" rel="noopener">isometricistanbul.com</a>)</li>
+  <li>Harita verisi © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap katkıcıları</a> (ODbL) · <a href="https://osmbuildings.org" target="_blank" rel="noopener">OSM Buildings</a></li>
+  <li>Isometric Istanbul'un kaynak görüntüleri: İBB 3B İstanbul (İBB Açık Veri Lisansı)</li>
+ </ul>
+ <p><small>Yapay zekâ beyanı: Kuzguncuk çizimi ve canlandırması yapay zekâ ile üretildi (Google Flow: Nano Banana 2.1, Omni 1.1 Flash). Videodaki seslendirme kendi sesimiz.</small></p>
+</div>
+
+<section class="kapanis">
+ <h2>Sıradaki <span class="vurgu">hangi semt?</span></h2>
+ <p>Videonun altına yaz; önerileri tek tek okuyoruz.</p>
+ <div class="handle">@yapayburlab</div>
+ <div class="takip">
+  <a href="https://www.youtube.com/@yapayburlab" target="_blank" rel="noopener">YouTube</a>
+  <a href="https://www.instagram.com/yapayburlab/" target="_blank" rel="noopener">Instagram</a>
+  <a href="https://www.tiktok.com/@yapayburlab" target="_blank" rel="noopener">TikTok</a>
+ </div>
+</section>
+
+<footer>Yapay Zekânın Gücü, Üretimin Geleceği! · YouTube · Instagram · TikTok: <b>@yapayburlab</b><br>
+İş birliği: <a href="mailto:yapayburlab@hotmail.com">yapayburlab@hotmail.com</a><br>
+Bu yöntem Yapay BurLab Fabrikası'nda denendi; içerik yapay zekâ destekli üretildi ve kontrol edildi. <a href="../">Tüm rehberler</a></footer>
+
+</div>
+<script>
+document.querySelectorAll('.kopyala').forEach(function(b){
+ b.addEventListener('click',function(){
+  var t=b.closest('.kod').querySelector('pre').innerText.replace(/\n+$/,'');
+  var bitti=function(){b.textContent='Kopyalandı ✓';setTimeout(function(){b.textContent='Kopyala'},1600)};
+  if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(bitti,yedek)}else{yedek()}
+  function yedek(){var a=document.createElement('textarea');a.value=t;a.setAttribute('readonly','');a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();try{document.execCommand('copy');bitti()}catch(e){}document.body.removeChild(a)}
+ });
+});
+if('IntersectionObserver' in window){var v=document.querySelector('video');new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){v.play().catch(function(){})}else{v.pause()}})},{threshold:.4}).observe(v)}
+</script>
+</body>
+</html>
