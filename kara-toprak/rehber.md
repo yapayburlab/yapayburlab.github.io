@@ -2,11 +2,11 @@
 
 Yapay BurLab · 3 Kasım 2026 · TOPRAK rehberi
 
-Bir sazın sesiyle açılıp gün doğumuna uzanan 81,68 saniyelik klibin yapım süreci. Burada kullanılan sahneler tarihî olayların belgesi değil, sanatsal canlandırmalardır. Atatürk’ün görüntüsü ve şarkılı performansı yapay zekâ ile oluşturulmuştur; gerçek tarihî ses kaydı değildir.
+Bir sazın sesiyle açılıp gün doğumuna uzanan 79,68 saniyelik klibin yapım süreci. Burada kullanılan sahneler tarihî olayların belgesi değil, sanatsal canlandırmalardır. Atatürk’ün görüntüsü ve şarkılı performansı yapay zekâ ile oluşturulmuştur; gerçek tarihî ses kaydı değildir.
 
 ## 1. Önce sesin son hâlini seç
 
-Bu projede pek çok ses denemesinin ardından kullanıcı tarafından seçilen 75,8 saniyelik kayıt temel alındı. Görüntü üretimi başlamadan önce kelime sonlarını, nefesleri ve müzik kapanışını kontrol ettik. Son kurguda yeni bir ses modeli üretmedik; seçilen vokali kullandık.
+Bu projede pek çok ses denemesinin ardından kullanıcı tarafından seçilen 75,8 saniyelik kayıt temel alındı. Görüntü üretimi başlamadan önce kelime sonlarını, nefesleri ve müzik kapanışını kontrol ettik. Seçilen vokal ana kaynak olarak korundu. Son giriş düzeltmesinde eksik ilk sözcük, aynı seçilmiş SoulX-Singer ayarlarıyla yeniden üretildi; yalnız kısa giriş bölümü mevcut vokale birleştirildi.
 
 Senin başlangıç dosyaların: kullanma hakkına sahip olduğun bir şarkı kaydı, mümkünse ayrı vokal ve enstrümantal eşlik, aynı karaktere ait net portreler. Kendi sesinle çalışıyorsan temiz doğal kayıtlar kullan. Kayıt uzunluğu tek başına ses benzerliği garantisi değildir.
 
@@ -38,21 +38,21 @@ Uygulama sırası: doğru görseli başlangıç karesi olarak ekle, sahneye ait 
 
 Ana ses tek katmanda kalır. Üretilen videoların sesleri kapatılır. Performans kaynağı kendi zamanında durur; ara görüntü geldiğinde alttaki şarkının saati ilerlemeye devam eder.
 
-Örnek: ana şarkının 25. saniyesi, ikinci 20 saniyelik performansın 5. saniyesidir. Son sürümde 1,88 saniyelik müzik girişi bulunduğu için bu an klibin 26,88. saniyesine taşınır. Görüntüyü öne veya geriye kaydırıp ağzı şarkıdan koparma.
+Örnek: ana şarkının 25. saniyesi, ikinci 20 saniyelik performansın 5. saniyesidir. Ana performansın zaman çizgisi 1,88 saniye ötelenmiş olduğu için bu an klibin 26,88. saniyesine taşınır. Görüntüyü öne veya geriye kaydırıp ağzı şarkıdan koparma.
 
 Ara planlarda yaklaşık 160 milisaniyelik kısa geçişler kullanıldı. Uzun yüz erimeleri yerine sade kesmeler tercih edildi. Yüzün dinlendiği bazı aralıklar ara görüntülerle örtüldü; uzun kesintisiz ön yüz planları kısaltıldı.
 
 ## 6. İlk saz vuruşunu yarıda kesme
 
-Bu projenin en çok düzeltilen noktası girişti. Önce girişe yalnız süre eklemek denendi; kullanıcı ilk sözün hâlâ sert geldiğini belirtti. Son çözümde kayıttaki belirgin saz vuruşunun hemen öncesinden başlanarak vuruşun başı korundu.
+İlk sözün kesik gelmesinin nedeni kaynak sınırıydı: vokal girdisi şarkının 38. saniyesinden alınmış, ilk “dost” ise yaklaşık 37,4. saniyede başlamıştı. V9 düzeltmesinde kaynak 34–56 saniye bağlamıyla aynı seçilmiş ses ayarlarından geçirildi. Kaynak 37,3–38,48 bölümü kullanıldı; 38,3–38,48 arasında mevcut vokale yumuşak geçiş yapıldı. Saz ve vokal aynı kaynak saatine yerleştirildi. Böylece yaklaşık 1,3 saniyelik saz girişinden sonra ilk sözcük duyulur; devamdaki performans zamanları kaymaz.
 
-Bu kayda özel son ayarlar: 1,88 saniye enstrümantal giriş; giriş müziğinde yaklaşık +4,5 dB vurgu; vokal yaklaşırken 1,15 saniyelik yumuşak geri çekilme. İlk 0,45 saniyelik vokal -2,5 dB’den normal seviyesine gelir. Kelimenin ilk hecesi kesilmedi, vokalin perdesi ve hızı değiştirilmedi. Bu değerler her şarkıya uygulanacak reçete değildir; kendi kaydında dinleyerek ayarla.
+Bu düzeltmede kullanılan yerel ayarlar: SoulX-Singer, seçilmiş aynı 10 saniyelik referans, CFG 3, 64 adım, seed 42, perde değişimi 0; model FP16 yüklenip float’a çevrildi. Yeni vokalin seviyesi onaylı vokalle eşlendi. Giriş müziği +3 dB’den 1,1 saniyelik yumuşak geçişle normal düzeye iner. V9’da ilk 2,38 saniye dışındaki miks birebir korundu. Bunlar bu kayda özel değerlerdir; farklı kayıtlarda dinleyerek kontrol edilmelidir.
 
 Sadece elindeki tek birleşik dosyanın başını kısmak, sazı da kısar. Ayrı eşlik varsa vokal ve müzik seviyelerini ayrı düzenle. Elindeki stem’in gerçekten aynı miks ve zamanlamaya ait olduğunu doğrula. Sayısal ölçüm, kulağın yerine geçmez.
 
 ## 7. Son söze alan bırak
 
-Son vokal 75,68. saniyede biter. Ardından aynı eşlik kaydından 6 saniye müzik devam eder. Son 2,8 saniyede ses kademeli söner; görüntü son 1,2 saniyede kararır. Toplam süre 81,68 saniyedir.
+Son vokal yaklaşık 75,68. saniyede biter. Kullanıcının son isteğiyle kapanış iki saniye kısaltıldı: ardından yaklaşık 4 saniye eşlik devam eder. Yeni son 1,2 saniyede ses yumuşakça söner ve görüntü kararır. V10 toplam süresi 79,68 saniyedir. Açılış ve ara planların zamanları korunur.
 
 Finalde sırttan görülen kişi ve genişleyen ufuk kullanıldı. Kaynağa küçük bir yavaşlatma uygulandı; sessiz bir portreyi dondurmak yerine manzaranın doğal hareketi korundu. Klibin sonuna yazı eklenmedi; marka kapak ve paylaşım metinlerinde yer alır.
 
@@ -60,7 +60,7 @@ Finalde sırttan görülen kişi ve genişleyen ufuk kullanıldı. Kaynağa kü�
 
 | Klip zamanı | Plan |
 |---|---|
-| 0–2,00 | Saz detayı; ilk söz 1,88’de başlar |
+| 0–2,00 | Saz detayı; geri kazanılan ilk söz yaklaşık 1,3’te başlar |
 | 2,00–7,08 | Sazlı performans |
 | 7,08–9,88 | Saz ara planı |
 | 12,28–16,28 | Sisli tepe |
@@ -71,7 +71,7 @@ Finalde sırttan görülen kişi ve genişleyen ufuk kullanıldı. Kaynağa kü�
 | 49,88–53,08 | Elde toprak |
 | 57,48–62,20 | Gelincik |
 | 65,88–71,80 | Buğday tarlası |
-| 73,48–81,68 | Gün doğumu; müzik kapanışı |
+| 73,48–79,68 | Gün doğumu; müzik kapanışı |
 
 Tabloda gösterilmeyen aralıklarda zamanına uygun performans görüntüsü devam eder.
 
@@ -117,7 +117,7 @@ Begin with the exact rear-view composition. The man remains still, looking towar
 
 ## Dışa aktarma ve son kontrol
 
-Teslim: dikey 720 × 1280, 25 kare/saniye, H.264 video ve AAC ses. Son sürüm kullanıcı tarafından onaylandı. Dosyanın tamamı teknik olarak çözümlendi; örnek kareler incelendi. Bu işlemler her hecede kusursuz dudak uyumu veya viral başarı kanıtı değildir.
+Teslim: dikey 720 × 1280, 25 kare/saniye, H.264 video ve AAC ses. Giriş düzeltmesi V9 kullanıcı tarafından onaylandı. V10, kullanıcının isteğiyle yalnız kapanıştan iki saniye kısaltılmış teslimdir. Dosyanın tamamı teknik olarak çözümlendi; örnek kareler incelendi. Bu işlemler her hecede kusursuz dudak uyumu veya viral başarı kanıtı değildir.
 
 Kendi klibini telefonda baştan sona dinle: ilk hece tam mı, sazla giriş doğal mı, yüz sessiz kalıyor mu, kelime ortasında kesme var mı, ses iki kez çalıyor mu, kapanış yeterli mi? Kapaktaki yazıyı küçük ekran ve uygulama kırpmasıyla ayrıca kontrol et.
 
