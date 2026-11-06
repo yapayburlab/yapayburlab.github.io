@@ -1,0 +1,37 @@
+MANASTIR — İlk üretim planından hareket istemleri. Sonuç garantisi değildir.
+
+01 — Yolculuğa giriş
+Four-second quiet portrait in a vintage train. The seated man keeps his lips gently closed and watches the rainy window. Slow controlled push-in, subtle breathing, one relaxed blink. Fine rain trails descend along the glass, faint steam rises from the coffee. Warm amber interior and cool blue exterior. Exterior scenery moves steadily in one direction. Finish on his thoughtful gaze, ready for a clean cut to the singing portrait. No speech or exaggerated facial movement.
+
+03 — Havuz
+Eight-second low, gentle forward camera move toward the octagonal school courtyard pool. A single autumn leaf drifts slowly on the water as tiny ripples reflect the pale golden facade. Keep all stone edges and building windows rigid and consistent. The camera ends slightly closer to the reflection, evoking a remembered place. No new figures, magical transformations or sudden wind.
+
+04 — Gençlik hatırası
+Six-second rear tracking shot. The cadet already seen from behind takes two measured steps away through the stone corridor, toward the existing daylight. Maintain the same walking direction, shoulder width, uniform and cap. One continuous restrained camera follow. Dust motes in the light are subtle; pillars remain perfectly rigid. Never turn the cadet toward camera or invent another face.
+
+05 — Hatıra fotoğrafı
+Six-second intimate overhead detail. The resting hand slowly glides one fingertip a short distance along the edge of the old photograph, then settles. Keep five natural fingers and maintain physical contact with the paper. Photograph, writing, watch and desk remain exactly as supplied. Slight push-in only; no new writing, floating objects or changing faces inside the photograph.
+
+06 — Gramofon
+Six-second still-life with the gramophone in the foreground and the man quietly standing by the window in the background. The record rotates steadily in one direction. Very slow lateral camera drift creates restrained parallax. The man breathes gently with closed lips; do not turn or change his face. Preserve the horn, needle contact and the original room layout. No added lyrics or gestures.
+
+07 — Viyadük
+Six-second wide cinematic view of the steam train on the stone viaduct. The locomotive advances along the visible rails in the direction its front is facing; the carriages follow the same track with fixed spacing. Smoke trails behind naturally. Nearly locked camera with a very gentle forward drift. Preserve bridge geometry and canyon scale. No reversing, derailment, added rails or locomotive duplication.
+
+08 — Meydan
+Six-second folk-dance moment in the existing cobbled square. The existing line of dancers performs one restrained coordinated side-step sequence while keeping joined hands connected. Maintain each dancer's position in the line, costume, number of limbs and face. Small camera arc only. Warm sunset and realistic foot contact; no jumps, spins, crowd multiplication or acrobatics.
+
+09 — Saz
+Six-second close detail of the existing musician's hands and baglama. A small natural right-hand strumming movement and minimal left-hand fingertip repositioning, keeping exactly five fingers, instrument dimensions and all string positions stable. Shallow depth of field and warm light; camera almost fixed. No impossible fast finger flourishes, extra strings, hand merging or changing instrument shape. Performance will be edited to the supplied music.
+
+10 — Vagon koridoru
+Six-second slow tracking shot in the existing wooden train corridor. The man takes two calm forward steps toward the camera while the camera retreats slightly, preserving his scale and direction. Relaxed closed mouth, steady facial identity and clothing. Natural walking weight transfer and restrained coat movement; windows and doors stay rigid. No speaking, dramatic turn or extra passengers.
+
+12 — Çeşme
+Eight-second intimate fountain detail. A thin continuous stream flows downward from the fixed brass tap into the stone basin, producing small physically plausible ripples. Camera glides slowly closer without changing angle dramatically. Preserve the carved stone, tap position and water level; subtle golden light. No water flowing upward, changing inscriptions, giant splashes or new objects.
+
+13 — Veda
+Six-second train-platform portrait. The man already holding the railing remains in place, looking toward the existing landscape. One slight reflective lowering of his gaze, then stillness; lips closed. Gentle wind moves the coat edge. Scenery and smoke indicate forward train travel consistently. Keep hand-to-railing contact and facial identity exact. No wave, turn, speaking or exaggerated nod.
+
+14 — Yol devam ediyor
+Six-second wide railway view using the exact locomotive orientation already present in the image. The train advances slowly forward along its existing rails; never reverse it or change which end is the locomotive. Smoke drifts behind and upward into dawn light. Camera gradually rises just slightly, revealing more sky while preserving track geometry. Calm final composition suitable for a gentle editorial fade to black during the last second. No generated fade, text, new carriages or camera orbit.
